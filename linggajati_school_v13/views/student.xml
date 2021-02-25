@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Modify Menu -->
+
+        <!-- Rename menu root-->
+        <record id="school.menu_ems" model="ir.ui.menu">
+            <field name="name">School</field>
+        </record>
+        <!-- Rename menu category-->
+        <record id="school.admission_register" model="ir.ui.menu">
+            <field name="name">Admission</field>
+        </record>
+        <!-- Rename menu action or submenu-->
+        <record id="school.menu_admission_form" model="ir.ui.menu">
+            <field name="name">Student Register</field>
+        </record>
+        <record id="school.menu_student_alumni" model="ir.ui.menu">
+            <field name="name">Graduate/Terminate</field>
+        </record>
+
+        <!-- Modify Action Window -->
+        
+        <record id="school.action_student_student_form_2" model="ir.actions.act_window">
+            <field name="name">Student Register</field>
+        </record>
+
+        <!-- Modify Form View -->
+    
+        <!-- student.student inherit form view -->
+        <record id="view_student_student_form_2_custom" model="ir.ui.view">
+            <field name="name">student.student.inherit.view.form</field>
+            <field name="model">student.student</field>
+            <field name="inherit_id" ref="school.view_student_student_form_2"/>
+            <field name="arch" type="xml">
+                <!-- Rename input placeholder -->
+                <field name="school_id" position="attributes">
+                    <attribute name="placeholder">School Level</attribute>
+                </field>
+                <field name="standard_id" position="attributes">
+                    <attribute name="placeholder">Level</attribute>
+                </field>
+                <field name="date_of_birth" position="attributes">
+                    <attribute name="placeholder">Date of Birth</attribute>
+                </field>
+
+                <!-- Hidden field -->
+                <!-- Masih errpr -->
+                <!-- <field name="medium_id" position="attributes">
+                    <attribute name="name" invisible="1"/>
+                </field> -->
+
+                <!-- Add field Class Room-->
+                <!-- Belum terpakai -->
+                <!-- <field name="standard_id" position="after">
+                    <field name="class_room"/>
+                </field> -->
+            </field>
+        </record>
+    </data>
+</odoo>
