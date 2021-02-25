@@ -1,15 +1,11 @@
-# -*- coding: utf-8 -*-
+from odoo import api, fields, models
 
-from odoo import models, fields, api
 
-# class linggajati_shcool(models.Model):
-#     _name = 'linggajati_shcool.linggajati_shcool'
+class Student(models.Model):
+    _inherit = 'student.student'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+    # Rename label field
+    admission_date = fields.Date(string='Register Date')
+    school_id = fields.Many2one(string='School Level')
+    standard_id = fields.Many2one(string='Level')
+    date_of_birth = fields.Date(string='Date of Birth')
