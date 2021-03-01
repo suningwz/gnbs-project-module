@@ -426,6 +426,7 @@
                 <sheet>
                     <div class="oe_inline">
                         <newline />
+                        <!-- Adding name -->
                         <separator string="Personal Information" name="personal_info" />
                         <field name="photo" widget="image" class="oe_avatar oe_left" style="max-width:100px;max-height:117px;" />
                         <div class="oe_title">
@@ -443,12 +444,14 @@
                         </div>
                     </div>
                     <group>
+                    <!-- Adding name -->
                         <group string="School Information" name="school_info">
                             <field name="school_id" placeholder="School Name" required="1" 
                                 attrs="{'readonly':[('state','=','alumni')]}" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
                             <field name="year" widget="selection" placeholder="Academic Year" readonly="1"/>
                             <field name="company_id" invisible="1"/>
                         </group>
+                        <!-- Adding name -->
                         <group string="Class Information" name="class_info">
                             <field name="medium_id" placeholder="Medium" widget="selection" attrs="{'readonly':[('state','=','alumni')]}"/>
                             <field name="standard_id" placeholder="Class" domain="[('school_id','=',school_id),('medium_id','=',medium_id)]" widget="selection" attrs="{'readonly':[('state','=','alumni')]}"/>
@@ -459,7 +462,8 @@
                     <group colspan="4">
                         <group>
                             <label for="street" string="Address" />
-                            <div class="o_address_format">
+                            <!-- Adding Name -->
+                            <div class="o_address_format" name="addr_format">
                                 <field name="street" placeholder="Street..." class="o_address_street" attrs="{'readonly':[('state','=','alumni')]}"/>
                                 <field name="street2" placeholder="Street2..." class="o_address_street" attrs="{'readonly':[('state','=','alumni')]}"/>
                                 <field name="country_id" placeholder="Country" class="o_address_country,oe_no_button" required="1" options="{&quot;no_open&quot;: True}" attrs="{'readonly':[('state','=','alumni')]}"/>
