@@ -44,9 +44,20 @@
                     <attribute name="placeholder">Date of Birth</attribute>
                 </field>
 
-                <xpath expr="//label[@for='street']" position="after">
+                <!-- <xpath expr="//label[@for='street']" position="after">
                     <field name="school_id"/>
+                </xpath> -->
+                <!-- <field name="addr_format" position="after">
+                    <field name="school_id"/>
+                </field> -->
+                <xpath expr="//div[@class='o_address_format']" position="after">
+                    <!-- Add your fields here -->
+                    <field name="school_id"/>
+                    <field name="year"/>
+                    <field name="medium_id"/>
+                    <field name="standard_id"/>
                 </xpath>
+
                 <field name="website" position="after">
                     <field name="medium_id"/>
                     <field name="standard_id"/>
