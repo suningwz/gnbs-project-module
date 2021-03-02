@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Modify Menu -->
+
+        <!-- Rename menu root-->
+        <record id="school.menu_ems" model="ir.ui.menu">
+            <field name="name">School</field>
+        </record>
+        <!-- Rename menu category-->
+        <record id="school.admission_register" model="ir.ui.menu">
+            <field name="name">Admission</field>
+        </record>
+        <!-- Rename menu action or submenu-->
+        <record id="school.menu_admission_form" model="ir.ui.menu">
+            <field name="name">Student Register</field>
+        </record>
+        <record id="school.menu_student_alumni" model="ir.ui.menu">
+            <field name="name">Graduate/Terminate</field>
+        </record>
+        
+    </data>
+</odoo>

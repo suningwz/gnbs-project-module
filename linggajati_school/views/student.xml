@@ -1,24 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- Modify Menu -->
-
-        <!-- Rename menu root-->
-        <record id="school.menu_ems" model="ir.ui.menu">
-            <field name="name">School</field>
-        </record>
-        <!-- Rename menu category-->
-        <record id="school.admission_register" model="ir.ui.menu">
-            <field name="name">Admission</field>
-        </record>
-        <!-- Rename menu action or submenu-->
-        <record id="school.menu_admission_form" model="ir.ui.menu">
-            <field name="name">Student Register</field>
-        </record>
-        <record id="school.menu_student_alumni" model="ir.ui.menu">
-            <field name="name">Graduate/Terminate</field>
-        </record>
-
         <!-- Modify Action Window -->
         
         <record id="school.action_student_student_form_2" model="ir.actions.act_window">
@@ -44,14 +26,7 @@
                     <attribute name="placeholder">Date of Birth</attribute>
                 </field>
 
-                <!-- <xpath expr="//label[@for='street']" position="after">
-                    <field name="school_id"/>
-                </xpath> -->
-                <!-- <field name="addr_format" position="after">
-                    <field name="school_id"/>
-                </field> -->
                 <xpath expr="//div[@class='o_address_format']" position="after">
-                    <!-- Add your fields here -->
                     <field name="school_id"/>
                     <field name="year"/>
                     <field name="medium_id"/>
@@ -59,16 +34,25 @@
                 </xpath>
 
                 <field name="website" position="after">
-                    <field name="medium_id"/>
-                    <field name="standard_id"/>
+                    <field name="gender"/>
+                    <field name="date_of_birth"/>
+                    <field name="age"/>
+                    <field name="admission_date"/>
+                    <field name="pid" readonly="1"/>
                 </field>
-                <!-- invisible label info -->
-                <!-- <xpath expr="//group[@name='school_info']" position="attributes">
-                    <attribute name="string" invisible=True></attribute>
-                </xpath> -->
-                <!-- <xpath expr="//group[@name='class_info']" position="attributes">
+                
+                <!-- Hidden Label Info & Field -->
+                <xpath expr="//group[@name='school_info']" position="attributes">
+                    <attribute name="attrs">{'invisible': 1}</attribute>
+                </xpath>
+                <xpath expr="//group[@name='class_info']" position="attributes">
                     <attribute name="invisible">1</attribute>
-                </xpath>  -->
+                </xpath>
+                <field name="website" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field> 
+                
+                <!-- Rename Label Info -->
                 <xpath expr="//separator[@name='personal_info']" position="attributes">
                     <attribute name="string">Student Information</attribute>
                 </xpath>
