@@ -452,7 +452,7 @@
                             <field name="company_id" invisible="1"/>
                         </group>
                         <!-- Adding name -->
-                        <group string="Class Information">
+                    <group string="Class Information">
                             <field name="medium_id" placeholder="Medium" widget="selection" attrs="{'readonly':[('state','=','alumni')]}"/>
                             <field name="standard_id" placeholder="Class" domain="[('school_id','=',school_id),('medium_id','=',medium_id)]" widget="selection" attrs="{'readonly':[('state','=','alumni')]}"/>
                             <field name="division_id" placeholder="Division" widget="selection" attrs="{'readonly':[('state','=','alumni')]}" invisible="1"/>
