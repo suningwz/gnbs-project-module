@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- odata -->
+<odoo>
+    <data>
+        <!-- oact -->
+        <!-- arkana.course.backup action window -->
+        <record id="arkana_course_action_backup" model="ir.actions.act_window">
+            <field name="name">Data Kursus Backup</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">arkana.course.backup</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+        </record>
+
+        <!-- arkana.course.backup tree view -->
+        <record id="arkana_course_backup_view_tree" model="ir.ui.view">
+            <field name="name">arkana.course.backup.view.tree</field>
+            <field name="model">arkana.course.backup</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="category_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- arkana.course.backup form view -->
+        <record id="arkana_course_backup_view_form" model="ir.ui.view">
+            <field name="name">arkana.course.backup.view.form</field>
+            <field name="model">arkana.course.backup</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="category_id"/>
+                            </group>
+                            <group>
+                                <field name="active"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Deskripsi" name="des">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- arkana.course.backup search view -->
+        <record id="arkana_course_backup_view_search" model="ir.ui.view">
+            <field name="name">arkana.course.backup.view.search</field>
+            <field name="model">arkana.course.backup</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <field name="description"/>
+
+                    <filter name="filter_nonactive" string="Nonaktif Data" domain="[('active', '=', False)]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter string="Kategori" name="kategori" domain="[]" 
+                            context="{'group_by': 'category_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="arkana_course_backup_menu_act" name="Data Kursus (Backup)" parent="arkana_master_data_menu_categ" 
+            action="arkana_course_action_backup" sequence="100"/>
+    </data>
+</odoo>

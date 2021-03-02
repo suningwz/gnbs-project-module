@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- arkana.session action window -->
+        <record id="arkana_session_action" model="ir.actions.act_window">
+            <field name="name">Sesi Kursus</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">arkana.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Buat Sessi Baru....
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+        </record>
+
+        <!-- arkana.session tree view -->
+        <record id="arkana_session_view_tree" model="ir.ui.view">
+            <field name="name">arkana.session.view.tree</field>
+            <field name="model">arkana.session</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="state == 'draft'" decoration-success="state == 'done'">
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="session_date" class="text-right"/>
+                    <field name="course_id"/>
+                    <field name="instructor_id"/>
+                    <field name="description"/>
+                    <field name="min_attendee"/>
+                    <field name="taken_seats" widget="progressbar"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- arkana.session form view -->
+        <record id="arkana_session_view_form" model="ir.ui.view">
+            <field name="name">arkana.session.view.form</field>
+            <field name="model">arkana.session</field>
+            <field name="arch" type="xml">
+                <form string="Form Sesi Kursus">
+                    <header>
+                        <button name="action_done" type="object" string="Done" class="oe_heighlight" states="draft"/>
+                        <button name="action_cancel" type="object" string="Cancel" states="draft"/>
+                        <button name="action_draft" type="object" string="Reset to Draft" states="done"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <group>
+                                <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="course_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="instructor_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="session_date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="min_attendee" attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': [('state', '!=', 'draft')]}"/>
+                                <field name="taken_seats"  widget="progressbar"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Deskripsi" name="desc">
+                                <field name="description" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </page>
+                            <page string="Data Peserta" name="data_peserta">
+                                <field name="attendee_ids" attrs="{'readonly': [('state', '!=', 'draft')]}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="student_id"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- arkana.session search view -->
+        <record id="arkana_session_view_search" model="ir.ui.view">
+            <field name="name">arkana.session.view.search</field>
+            <field name="model">arkana.session</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="course_id"/>
+                    <field name="instructor_id"/>
+                    <field name="description"/>
+
+                    <!-- <filter name="filter_nonactive" string="Nonaktif" domain="[('active', '=', False)]"/> -->
+                    <group expand="0" string="Group By">
+                        <filter string="Kursus" name="group_kursus" domain="[]" 
+                            context="{'group_by': 'course_id'}"/>
+                        <filter string="Pengajar" name="group_pengajar" domain="[]" 
+                            context="{'group_by': 'instructor_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="arkana_session_menu_act" name="Sesi Kursus" parent="arkana_academy_menu_root"
+            action="arkana_session_action" sequence="10"/>
+    </data>
+</odoo>

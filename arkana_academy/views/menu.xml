@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- omenur This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem id="arkana_academy_menu_root" name="Academy" sequence="20"
+            web_icon="arkana_academy,static/description/icon.png"/>
+        <!-- omenuc This Menu Item Must have a parent -->
+        <menuitem id="arkana_master_data_menu_categ" name="Master Data" 
+            parent="arkana_academy_menu_root" sequence="20"/>
+    </data>
+</odoo>

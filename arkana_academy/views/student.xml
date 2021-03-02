@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- odata -->
+    <data>
+        <!-- res.partner search view -->
+        <record id="siswa_view_search" model="ir.ui.view">
+            <field name="name">res.partner.view.search</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="email"/>
+
+                    <filter name="filter_siswa" string="Siswa" domain="[('is_student', '=', True)]"/>
+                </search>
+            </field>
+        </record>
+        <!-- oact -->
+        <!-- res.partner action window -->
+        <record id="res_partner_student_action" model="ir.actions.act_window">
+            <field name="name">Siswa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="siswa_view_search"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+            <field name="context">{
+                'default_is_student': True,
+                'search_default_filter_siswa': 1,
+            }</field>
+            <field name="domain">[('is_student', '=', True)]</field>
+        </record>
+
+
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="student_menu_act" name="Siswa" parent="arkana_master_data_menu_categ" 
+            action="res_partner_student_action" sequence="40"/>
+        
+    </data>
+</odoo>

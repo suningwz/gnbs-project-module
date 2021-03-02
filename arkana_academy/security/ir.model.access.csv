@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_arkana_course_category,access_arkana_course_category,model_arkana_course_category,base.group_user,1,1,1,1
+access_arkana_course,access_arkana_course,model_arkana_course,base.group_user,1,1,1,1
+access_arkana_session,access_arkana_session,model_arkana_session,base.group_user,1,1,1,1
+access_arkana_session_attendee,access_arkana_session_attendee,model_arkana_session_attendee,base.group_user,1,1,1,1
+access_arkana_course_backup,access_arkana_course_backup,model_arkana_course_backup,base.group_user,1,1,1,1
