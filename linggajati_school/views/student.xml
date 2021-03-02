@@ -15,6 +15,10 @@
             <field name="model">student.student</field>
             <field name="inherit_id" ref="school.view_student_student_form_2"/>
             <field name="arch" type="xml">
+                <xpath expr="/form/sheet//div/separator" position="attributes">
+                    <attribute name="string">Student Information</attribute>
+                </xpath>
+
                 <!-- Rename input placeholder -->
                 <field name="school_id" position="attributes">
                     <attribute name="placeholder">School Level</attribute>
@@ -26,13 +30,13 @@
                     <attribute name="placeholder">Date of Birth</attribute>
                 </field>
 
+                <!-- Custom Position Field -->
                 <xpath expr="//div[@class='o_address_format']" position="after">
                     <field name="school_id"/>
                     <field name="year"/>
                     <field name="medium_id"/>
                     <field name="standard_id"/>
                 </xpath>
-
                 <field name="website" position="after">
                     <field name="gender"/>
                     <field name="date_of_birth"/>
@@ -42,20 +46,30 @@
                 </field>
                 
                 <!-- Hidden Label Info & Field -->
-                <xpath expr="//group[@name='school_info']" position="attributes">
+                <!-- <xpath expr="//group[@name='school_info']" position="attributes">
+                    <attribute name="attrs">{'invisible': 1}</attribute>
+                </xpath> -->
+                <!-- Label School Information -->
+                <xpath expr="/form/sheet/group/group[1]" position="attributes">
                     <attribute name="attrs">{'invisible': 1}</attribute>
                 </xpath>
-                <xpath expr="//group[@name='class_info']" position="attributes">
+                <!-- Label Class Information -->
+                <xpath expr="/form/sheet/group/group[2]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <field name="website" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field> 
-                
-                <!-- Rename Label Info -->
-                <xpath expr="//separator[@name='personal_info']" position="attributes">
-                    <attribute name="string">Student Information</attribute>
-                </xpath>
+
+                <!-- Custom Field -->
+                <!-- <field name="middle" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field> -->
+                <field name="last" position="attributes">
+                    <!-- <attribute name="attrs">{'invisible': 1}</attribute> -->
+                    <attribute name="placeholder">Date of Birth</attribute>
+                </field>
+
             </field>
         </record>
     </data>
