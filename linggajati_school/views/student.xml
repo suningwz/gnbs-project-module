@@ -37,7 +37,7 @@
                 <xpath expr="//div[@class='o_address_format']" position="after">
                     <field name="school_id"/>
                     <field name="year"/>
-                    <field name="medium_id"/>
+                    <!-- <field name="medium_id"/> -->
                     <field name="standard_id"/>
                 </xpath>
                 <field name="website" position="after">
