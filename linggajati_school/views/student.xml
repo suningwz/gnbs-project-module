@@ -22,9 +22,9 @@
                     <attribute name="string">Student Information</attribute>
                 </xpath>
                 <!-- Rename input placeholder -->
-                <field name="school_id" position="attributes">
+                <!-- <field name="school_id" position="attributes">
                     <attribute name="placeholder">School Level</attribute>
-                </field>
+                </field> -->
                 <field name="standard_id" position="attributes">
                     <attribute name="placeholder">Level</attribute>
                 </field>
