@@ -25,8 +25,9 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/student.xml',
-        'views/menu.xml'
+        'views/student_view.xml',
+        'views/menu.xml',
+        'views/school_fees_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

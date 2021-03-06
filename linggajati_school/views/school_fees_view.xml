@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Inherited Form View Of Student -->
+        <record id="view_student_student_form2" model="ir.ui.view">
+            <field name="name">student.student.form</field>
+            <field name="model">student.student</field>
+            <field name="inherit_id" ref="school.view_student_student_form_2"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="/form/sheet/div[1]" position="before">
+                    <div class="oe_button_box" name="buttons">
+                        <button type="action" class="oe_inline oe_stat_button" groups="school.group_school_administration,school.group_school_student">
+                            <img src="../school_fees/static/description/icon.png" alt="logo"
+                                style="height:25px;width:50px;float:left;"/>
+                            <lable style="">Fees Receipt</lable>
+                        </button>
+                    </div>
+                </xpath>
+            
+            </field>
+        </record>
+    </data>
+</odoo>

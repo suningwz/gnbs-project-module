@@ -18,13 +18,9 @@
 
                 <!-- Rename -->
                 <!-- Rename Label Form Info -->
-                <xpath expr="/form/sheet//div/separator" position="attributes">
+                <xpath expr="/form/sheet/div/separator" position="attributes">
                     <attribute name="string">Student Information</attribute>
                 </xpath>
-                <!-- Rename input placeholder -->
-                <!-- <field name="school_id" position="attributes">
-                    <attribute name="placeholder">School Level</attribute>
-                </field> -->
                 <field name="standard_id" position="attributes">
                     <attribute name="placeholder">Level</attribute>
                 </field>
