@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
+        <!-- Inherited Form View Of Student -->
         <record id="action_stu_fees_form" model="ir.actions.act_window">
             <field name="name">Fees Register</field>
             <field name="res_model">student.payslip</field>
@@ -9,29 +10,65 @@
             <field name="context">{'search_default_student_id': active_id}</field>
         </record>
 
-        <!-- Inherited Form View Of Student -->
-        <record id="view_student_student_form1" model="ir.ui.view">
-            <field name="name">student.student.form</field>
+        <!-- Inherited Form 2 View Of Student -->
+        <record id="view_student_student_form_2" model="ir.ui.view">
+            <field name="name">student.student.inherit.view.form</field>
             <field name="model">student.student</field>
             <field name="inherit_id" ref="school.view_student_student_form_2"/>
             <field name="arch" type="xml">
-                
+
+                <!-- Create Smart Button-->
                 <xpath expr="/form/sheet/div[1]" position="before">
                     <div class="oe_button_box" name="buttons">
-                        <button 
-                            name="%(action_stu_fees_form)d"
-                            type="action" 
-                            class="oe_inline oe_stat_button" 
-                            groups="school.group_school_administration,school.group_school_student"
-                            attrs="{'invisible':[('state', 'in', ['draft','terminate','alumni','cancel'])]}">
-
+                        <button name="%(action_stu_fees_form)d" type="action" class="oe_inline oe_stat_button" groups="school.group_school_administration,school.group_school_student" attrs="{'invisible':[('state', 'in', ['draft','terminate','alumni','cancel'])]}">
                             <img src="../school_fees/static/description/icon.png" alt="logo"
                                 style="height:25px;width:50px;float:left;"/>
                             <lable style="">Fees Receipt</lable>
                         </button>
                     </div>
                 </xpath>
-            
+
+                <!-- Create Notebook -->
+                <xpath expr="/form/sheet/notebook/page[6]" position="after">
+                    <page string="Invoice">
+                        <field name="fees_receipt_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="number"/>
+                                <field name="student_id"/>
+                                <field name="date"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                
+            </field>
+        </record>
+
+        <!-- Inherited Form 1 View Of Student -->
+        <record id="view_student_student_form_1" model="ir.ui.view">
+            <field name="name">student.student.inherit.view.form</field>
+            <field name="model">student.student</field>
+            <field name="inherit_id" ref="school.view_student_student_form_1"/>
+            <field name="arch" type="xml">
+                
+                <!-- Create Notebook -->
+                <xpath expr="/form/sheet/notebook/page[10]" position="after">
+                    <page string="Invoice">
+                        <!-- <field name="fees_receipt_ids"/> -->
+                        <field name="fees_receipt_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="number"/>
+                                <field name="student_id"/>
+                                <field name="date"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
             </field>
         </record>
     </data>

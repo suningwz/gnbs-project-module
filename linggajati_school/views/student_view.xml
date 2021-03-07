@@ -53,9 +53,6 @@
                     <attribute name="statusbar_visible">draft,done,terminate,cancel,alumni</attribute>
                 </field>
 
-                <!-- Custom Attributes-->
-
-
                 <!-- Hidden -->
                 <!-- Group School Information -->
                 <xpath expr="/form/sheet/group/group[1]" position="attributes">
@@ -73,7 +70,6 @@
                 <field name="website" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field> 
-
             </field>
         </record>
     </data>

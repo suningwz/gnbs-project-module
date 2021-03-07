@@ -16,3 +16,13 @@ class Student(models.Model):
                               ('cancel', 'Cancel'),
                               ('alumni', 'Graduate')],
                              'Status', readonly=True, default="draft")
+
+    fees_receipt_ids = fields.One2many(comodel_name='student.payslip', inverse_name='student_id', string='Fees Receipt')
+    
+    # Bikin error Contacts require a name
+    # name = fields.Char('Description')
+    
+    # number = fields.Char('Number', readonly=True,
+    #                      default=lambda self: _('/'))
+    # fees_receipt_ids one2many
+    # llu isi di view dengn fee receipt ids ini, lalu upgrade, coba lihat muncul atau tidak, kalau tidak muncul berarti perlu ditambahkan field description dll di model ini
