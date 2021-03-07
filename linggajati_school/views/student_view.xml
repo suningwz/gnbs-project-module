@@ -27,13 +27,16 @@
                 <field name="date_of_birth" position="attributes">
                     <attribute name="placeholder">Date of Birth</attribute>
                 </field>
+                <xpath expr="//button[@name='admission_done']" position="attributes">
+                    <attribute name="string">Accepted as Student </attribute>
+                    <attribute name="class">btn-primary oe_stat_button"</attribute>
+                </xpath>
 
                 <!-- Custom -->
                 <!-- Custom Position Field -->
                 <xpath expr="//div[@class='o_address_format']" position="after">
                     <field name="school_id"/>
                     <field name="year"/>
-                    <!-- <field name="medium_id"/> -->
                     <field name="standard_id"/>
                 </xpath>
                 <field name="website" position="after">
@@ -45,6 +48,9 @@
                 </field>
                 <field name="parent_id" position="attributes">
                     <attribute name="options">{'no_create': False}</attribute>
+                </field>
+                <field name="state" position="attributes">
+                    <attribute name="statusbar_visible">draft,done,terminate,cancel,alumni</attribute>
                 </field>
 
                 <!-- Custom Attributes-->
