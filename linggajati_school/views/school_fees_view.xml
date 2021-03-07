@@ -12,7 +12,7 @@
 
         <!-- Inherited Form 2 View Of Student -->
         <record id="view_student_student_form_2" model="ir.ui.view">
-            <field name="name">student.student.inherit.view.form</field>
+            <field name="name">student.student.inherit.view.form.2</field>
             <field name="model">student.student</field>
             <field name="inherit_id" ref="school.view_student_student_form_2"/>
             <field name="arch" type="xml">
@@ -23,14 +23,14 @@
                         <button name="%(action_stu_fees_form)d" type="action" class="oe_inline oe_stat_button" groups="school.group_school_administration,school.group_school_student" attrs="{'invisible':[('state', 'in', ['draft','terminate','alumni','cancel'])]}">
                             <img src="../school_fees/static/description/icon.png" alt="logo"
                                 style="height:25px;width:50px;float:left;"/>
-                            <lable style="">Fees Receipt</lable>
+                            <lable style="">Invoiced</lable>
                         </button>
                     </div>
                 </xpath>
 
                 <!-- Create Notebook -->
                 <xpath expr="/form/sheet/notebook/page[6]" position="after">
-                    <page string="Invoice">
+                    <page string="Invoiced">
                         <field name="fees_receipt_ids">
                             <tree>
                                 <field name="name"/>
@@ -48,14 +48,14 @@
 
         <!-- Inherited Form 1 View Of Student -->
         <record id="view_student_student_form_1" model="ir.ui.view">
-            <field name="name">student.student.inherit.view.form</field>
+            <field name="name">student.student.inherit.view.form.1</field>
             <field name="model">student.student</field>
             <field name="inherit_id" ref="school.view_student_student_form_1"/>
             <field name="arch" type="xml">
                 
                 <!-- Create Notebook -->
                 <xpath expr="/form/sheet/notebook/page[10]" position="after">
-                    <page string="Invoice">
+                    <page string="Invoiced">
                         <!-- <field name="fees_receipt_ids"/> -->
                         <field name="fees_receipt_ids">
                             <tree>
@@ -68,7 +68,8 @@
                         </field>
                     </page>
                 </xpath>
-
+                <!-- Fees Receipt rubah jadi invoiced langsung dari file asli -->
+                <!-- icon="fa-pencil-square-o" icon untuk invoice -->
             </field>
         </record>
     </data>
