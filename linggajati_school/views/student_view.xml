@@ -166,6 +166,21 @@
                 <xpath expr="/form/sheet/notebook/page[1]" position="attributes"> <!-- General -->
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="/form/sheet/notebook/page[3]" position="attributes"> <!-- References -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[5]" position="attributes"> <!-- Award Info -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[7]" position="attributes"> <!-- Medical -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[8]" position="attributes"> <!-- Certificates -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[10]" position="attributes"> <!-- History -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
 
             </field>
         </record>
