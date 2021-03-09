@@ -98,9 +98,13 @@
                     <attribute name="placeholder">Date of Birth</attribute>
                 </field>
                 <xpath expr="//button[@name='admission_done']" position="attributes">
-                    <attribute name="string">Accepted as Student </attribute>
+                    <attribute name="string">Accepted as Student</attribute>
                     <attribute name="class">btn-primary oe_stat_button"</attribute>
                 </xpath>
+                <xpath expr="/form/header/button[@name='set_alumni']" position="attributes">
+                    <attribute name="string">Graduate</attribute>
+                </xpath>
+
 
                 <!-- Custom -->
                 <!-- Custom Position Field -->
