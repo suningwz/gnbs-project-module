@@ -31,6 +31,13 @@
                     <attribute name="string">Accepted as Student </attribute>
                     <attribute name="class">btn-primary oe_stat_button"</attribute>
                 </xpath>
+                <!-- Rename Notebeook -->
+                <xpath expr="/form/sheet/notebook/page[4]" position="attributes"> <!-- Previous School -->
+                    <attribute name="string">School History</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[4]/field/form/separator" position="attributes">
+                    <attribute name="string">School History Details</attribute>
+                </xpath>
 
                 <!-- Custom -->
                 <!-- Custom Position Field -->
@@ -46,6 +53,12 @@
                     <field name="admission_date"/>
                     <field name="pid" readonly="1"/>
                 </field>
+                <!-- Custom Position Tree on a Notebook-->
+                <!--Previous School-->
+                <xpath expr="/form/sheet/notebook/page[4]/field/tree/field[2]" position="replace">
+                    <field name="course_id" widget="selection" />
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[4]/field/tree/field[5]" position="replace"/>
                 <!-- Custom Other -->
                 <field name="parent_id" position="attributes">
                     <attribute name="options">{'no_create': False}</attribute>
@@ -179,7 +192,7 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="/form/sheet/notebook/page[10]" position="attributes"> <!-- History -->
-                    <attribute name="invisible">1</attribute>
+                    <!-- <attribute name="invisible">1</attribute> -->
                 </xpath>
 
             </field>

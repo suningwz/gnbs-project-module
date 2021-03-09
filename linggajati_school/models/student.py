@@ -18,7 +18,7 @@ class Student(models.Model):
                              'Status', readonly=True, default="draft")
 
     fees_receipt_ids = fields.One2many(comodel_name='student.payslip', inverse_name='student_id', string='Fees Receipt')
-    
+    previous_school_ids = fields.One2many(string='School History Details')
     # Bikin error Contacts require a name
     # name = fields.Char('Description')
     
