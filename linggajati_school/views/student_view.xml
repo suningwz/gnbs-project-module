@@ -9,7 +9,7 @@
 
         <!-- Modify Form View -->
     
-        <!-- student.student inherit form view -->
+        <!-- student.student inherit form 2 view -->
         <record id="view_student_student_form_2_custom" model="ir.ui.view">
             <field name="name">student.student.inherit.view.form</field>
             <field name="model">student.student</field>
@@ -66,11 +66,83 @@
                 <xpath expr="/form/sheet/notebook/page[1]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                <!-- Field Website-->
+                <!-- Field -->
                 <field name="website" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field> 
+                <xpath expr="/form/sheet/div/div/group/field[@name='pid']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/div/div/group/br[1]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
             </field>
         </record>
+
+        <!-- student.student inherit form 1 view -->
+        <record id="view_student_student_form_1_custom" model="ir.ui.view">
+            <field name="name">student.student.inherit.view.form</field>
+            <field name="model">student.student</field>
+            <field name="inherit_id" ref="school.view_student_student_form_1"/>
+            <field name="arch" type="xml">
+
+                <!-- Rename -->
+                <!-- Rename Label Form Info -->
+                <xpath expr="/form/sheet/div/separator" position="attributes">
+                    <attribute name="string">Student Information</attribute>
+                </xpath>
+                <field name="standard_id" position="attributes">
+                    <attribute name="placeholder">Level</attribute>
+                </field>
+                <field name="date_of_birth" position="attributes">
+                    <attribute name="placeholder">Date of Birth</attribute>
+                </field>
+                <xpath expr="//button[@name='admission_done']" position="attributes">
+                    <attribute name="string">Accepted as Student </attribute>
+                    <attribute name="class">btn-primary oe_stat_button"</attribute>
+                </xpath>
+
+                <!-- Custom -->
+                <!-- Custom Position Field -->
+                <xpath expr="//div[@class='o_address_format']" position="after">
+                    <field name="school_id"/>
+                    <field name="year"/>
+                    <field name="standard_id"/>
+                </xpath>
+                <field name="website" position="after">
+                    <field name="gender"/>
+                    <field name="date_of_birth"/>
+                    <field name="age"/>
+                    <field name="admission_date"/>
+                    <field name="pid" readonly="1"/>
+                </field>
+                <field name="parent_id" position="attributes">
+                    <attribute name="options">{'no_create': False}</attribute>
+                </field>
+                <field name="state" position="attributes">
+                    <attribute name="statusbar_visible">done,terminate,alumni</attribute>
+                </field>
+
+                <!-- Hidden -->
+                <!-- Group School Information -->
+                <xpath expr="/form/sheet/group/group[1]" position="attributes">
+                    <attribute name="attrs">{'invisible': 1}</attribute>
+                </xpath>
+                <!-- Group Class Information -->
+                <xpath expr="/form/sheet/group/group[2]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!-- Page General Information -->
+                <xpath expr="/form/sheet/notebook/page[1]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!-- Field-->
+                <field name="website" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+
+            </field>
+        </record>
+
     </data>
 </odoo>
