@@ -46,12 +46,21 @@
                     <field name="admission_date"/>
                     <field name="pid" readonly="1"/>
                 </field>
+                <!-- Custom Other -->
                 <field name="parent_id" position="attributes">
                     <attribute name="options">{'no_create': False}</attribute>
                 </field>
                 <field name="state" position="attributes">
                     <attribute name="statusbar_visible">draft,done,terminate,cancel,alumni</attribute>
                 </field>
+                <!-- Custom Notebook -->
+                <xpath expr="/form/sheet/notebook/page[2]/field" position="inside">
+                    <tree>
+                        <field name="name" placeholder="Name"/>
+                        <field name="relation_id" placeholder="Relation"/>
+                        <field name="phone" placeholder="No. Phone"/>
+                    </tree>
+                </xpath>
 
                 <!-- Hidden -->
                 <!-- Group School Information -->
@@ -105,7 +114,6 @@
                     <attribute name="string">Graduate</attribute>
                 </xpath>
 
-
                 <!-- Custom -->
                 <!-- Custom Position Field -->
                 <xpath expr="//div[@class='o_address_format']" position="after">
@@ -120,6 +128,7 @@
                     <field name="admission_date"/>
                     <field name="pid" readonly="1"/>
                 </field>
+                <!-- Custom Other -->
                 <field name="parent_id" position="attributes">
                     <attribute name="options">{'no_create': False}</attribute>
                 </field>
@@ -127,6 +136,14 @@
                     <attribute name="statusbar_visible">done,terminate,alumni</attribute>
                     <attribute name="attrs">{}</attribute>
                 </field>
+                <!-- Custom Notebook -->
+                <xpath expr="/form/sheet/notebook/page[2]/field" position="inside">
+                    <tree>
+                        <field name="name" placeholder="Name"/>
+                        <field name="relation_id" placeholder="Relation"/>
+                        <field name="phone" placeholder="No. Phone"/>
+                    </tree>
+                </xpath>
 
                 <!-- Hidden -->
                 <!-- Group School Information -->

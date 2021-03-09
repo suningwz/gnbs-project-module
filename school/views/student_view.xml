@@ -505,18 +505,6 @@
                                 </sheet>
                             </form>
                         </page>
-                        <!-- <page string="Parents">
-                            <field name="parent_id" nolabel="1" colspan="4" attrs="{'readonly':[('state','=','alumni')]}" options="{&quot;no_open&quot;: False, &quot;no_create&quot;: False}">
-                                <tree string="Parents" editable="bottom">
-                                    <field name="partner_id" placeholder="Name"/>
-                                    <field name="relation_id" placeholder="Relation"/>
-                                    <field name="phone" placeholder="Np. Phone"/>
-                                    <field name="email"/>
-                                    <field name="city"/>
-                                    <field name="country_id"/>
-                                </tree>
-                            </field>
-                        </page> -->
                         <page string="Parents">
                             <field name="parent_id" attrs="{'readonly':[('state','=','alumni')]}"
                                 context="{'form_view_ref':'school.view_parent_form','default_parent_school':1}"
