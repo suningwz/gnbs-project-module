@@ -71,10 +71,6 @@
                 <xpath expr="/form/sheet/group/group[2]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                <!-- Page General Information -->
-                <xpath expr="/form/sheet/notebook/page[1]" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
                 <!-- Field -->
                 <field name="website" position="attributes">
                     <attribute name="invisible">1</attribute>
@@ -85,6 +81,14 @@
                 <xpath expr="/form/sheet/div/div/group/br[1]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <!-- Notebook -->
+                <xpath expr="/form/sheet/notebook/page[1]" position="attributes"> <!-- General -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[3]" position="attributes"> <!-- References -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
             </field>
         </record>
 
@@ -154,14 +158,14 @@
                 <xpath expr="/form/sheet/group/group[2]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                <!-- Page General Information -->
-                <xpath expr="/form/sheet/notebook/page[1]" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
                 <!-- Field-->
                 <field name="website" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
+                <!-- Notebook -->
+                <xpath expr="/form/sheet/notebook/page[1]" position="attributes"> <!-- General -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
 
             </field>
         </record>
