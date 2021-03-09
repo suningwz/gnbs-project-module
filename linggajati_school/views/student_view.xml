@@ -125,6 +125,7 @@
                 </field>
                 <field name="state" position="attributes">
                     <attribute name="statusbar_visible">done,terminate,alumni</attribute>
+                    <attribute name="attrs">{}</attribute>
                 </field>
 
                 <!-- Hidden -->
