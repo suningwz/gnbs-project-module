@@ -38,6 +38,12 @@
                 <xpath expr="/form/sheet/notebook/page[4]/field/form/separator" position="attributes">
                     <attribute name="string">School History Details</attribute>
                 </xpath>
+                <xpath expr="/form/sheet/notebook/page[5]" position="attributes"> <!-- Family Details -->
+                    <attribute name="string">Family</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[5]/field/form/group/group[1]" position="attributes">
+                    <attribute name="placeholder">Enter or Select Family Status</attribute>
+                </xpath>
 
                 <!-- Custom -->
                 <!-- Custom Position Field -->
