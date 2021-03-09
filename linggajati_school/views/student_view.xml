@@ -27,6 +27,7 @@
                 <field name="date_of_birth" position="attributes">
                     <attribute name="placeholder">Date of Birth</attribute>
                 </field>
+                <!-- Rename Button -->
                 <xpath expr="//button[@name='admission_done']" position="attributes">
                     <attribute name="string">Accepted as Student </attribute>
                     <attribute name="class">btn-primary oe_stat_button"</attribute>
@@ -59,12 +60,6 @@
                     <field name="admission_date"/>
                     <field name="pid" readonly="1"/>
                 </field>
-                <!-- Custom Position Tree on a Notebook-->
-                <!--Previous School-->
-                <xpath expr="/form/sheet/notebook/page[4]/field/tree/field[2]" position="replace">
-                    <field name="course_id" widget="selection" />
-                </xpath>
-                <xpath expr="/form/sheet/notebook/page[4]/field/tree/field[5]" position="replace"/>
                 <!-- Custom Other -->
                 <field name="parent_id" position="attributes">
                     <attribute name="options">{'no_create': False}</attribute>
@@ -72,7 +67,8 @@
                 <field name="state" position="attributes">
                     <attribute name="statusbar_visible">draft,done,terminate,cancel,alumni</attribute>
                 </field>
-                <!-- Custom Notebook -->
+                <!-- Custom Position Tree on a Notebook-->
+                <!-- Parents -->
                 <xpath expr="/form/sheet/notebook/page[2]/field" position="inside">
                     <tree>
                         <field name="name" placeholder="Name"/>
@@ -80,6 +76,11 @@
                         <field name="phone" placeholder="No. Phone"/>
                     </tree>
                 </xpath>
+                <!--Previous School-->
+                <xpath expr="/form/sheet/notebook/page[4]/field/tree/field[2]" position="replace">
+                    <field name="course_id" widget="selection" />
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[4]/field/tree/field[5]" position="replace"/>
 
                 <!-- Hidden -->
                 <!-- Group School Information -->
@@ -129,12 +130,26 @@
                 <field name="date_of_birth" position="attributes">
                     <attribute name="placeholder">Date of Birth</attribute>
                 </field>
+                <!-- Rename Button -->
                 <xpath expr="//button[@name='admission_done']" position="attributes">
                     <attribute name="string">Accepted as Student</attribute>
                     <attribute name="class">btn-primary oe_stat_button"</attribute>
                 </xpath>
                 <xpath expr="/form/header/button[@name='set_alumni']" position="attributes">
                     <attribute name="string">Graduate</attribute>
+                </xpath>
+                <!-- Rename Notebeook -->
+                <xpath expr="/form/sheet/notebook/page[4]" position="attributes"> <!-- Previous School -->
+                    <attribute name="string">School History</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[4]/field/form/separator" position="attributes">
+                    <attribute name="string">School History Details</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[6]" position="attributes"> <!-- Family Details -->
+                    <attribute name="string">Family</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[6]/field/form/group/group[1]" position="attributes">
+                    <attribute name="placeholder">Enter or Select Family Status</attribute>
                 </xpath>
 
                 <!-- Custom -->
@@ -159,7 +174,8 @@
                     <attribute name="statusbar_visible">done,terminate,alumni</attribute>
                     <attribute name="attrs">{}</attribute>
                 </field>
-                <!-- Custom Notebook -->
+                <!-- Custom Position Tree on a Notebook-->
+                <!-- Parents -->
                 <xpath expr="/form/sheet/notebook/page[2]/field" position="inside">
                     <tree>
                         <field name="name" placeholder="Name"/>
@@ -167,6 +183,11 @@
                         <field name="phone" placeholder="No. Phone"/>
                     </tree>
                 </xpath>
+                <!--Previous School-->
+                <xpath expr="/form/sheet/notebook/page[4]/field/tree/field[2]" position="replace">
+                    <field name="course_id" widget="selection" />
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[4]/field/tree/field[5]" position="replace"/>
 
                 <!-- Hidden -->
                 <!-- Group School Information -->
