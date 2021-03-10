@@ -26,6 +26,21 @@
         <record model="ir.ui.menu" id="school.menu_standard_medium_form">
             <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
         </record>
+        <record model="ir.ui.menu" id="school.menu_cast">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="school.menu_sub_doc_type_sub_form">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="school.mother_tongue_menu">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="school.menu_assign_rollno_form">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="school.menu_move_standards_form">
+            <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
+        </record>
 
         <!-- Rename Sub Menu -->
         <record id="school.menu_school_standard_form" model="ir.ui.menu">
