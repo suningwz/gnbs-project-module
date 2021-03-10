@@ -7,10 +7,11 @@
             <field name="model">school.standard</field>
             <field name="inherit_id" ref="school.view_school_standard_form"/>
             <field name="arch" type="xml">
-                <!-- Hidden -->
+                <!-- Custom -->
                 <field name="medium_id" position="attributes">
                     <attribute name="required">False</attribute>
                 </field>
+                <!-- Hidden -->
                 <field name="medium_id" position="replace"/>
                 <field name="roll_no" position="replace"/>
             </field>
@@ -35,6 +36,81 @@
             <field name="arch" type="xml">
                 <!-- Hidden -->
                 <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[3]" position="replace"/>
+            </field>
+        </record>
+
+        <!-- standard.standard inherit form view -->
+        <record id="view_standard_standard_form_custom" model="ir.ui.view">
+            <field name="name">standard.standard.inherit.view.form</field>
+            <field name="model">standard.standard</field>
+            <field name="inherit_id" ref="school.view_standard_standard_form"/>
+            <field name="arch" type="xml">
+                <!-- Custom -->
+                <field name="code" position="attributes">
+                    <attribute name="required">False</attribute>
+                </field>
+                <!-- Hidden -->
+                <field name="code" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="sequence" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <!-- standard.standard inherit tree view -->
+        <record id="view_standard_standard_tree_custom" model="ir.ui.view">
+            <field name="name">standard.standard.inherit.view.tree</field>
+            <field name="model">standard.standard</field>
+            <field name="inherit_id" ref="school.view_standard_standard_tree"/>
+            <field name="arch" type="xml">
+                <!-- Hidden -->
+                <field name="code" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="sequence" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <!-- standard.division inherit form view -->
+        <record id="view_standard_division_form_custom" model="ir.ui.view">
+            <field name="name">standard.division.inherit.view.form</field>
+            <field name="model">standard.division</field>
+            <field name="inherit_id" ref="school.view_standard_division_form"/>
+            <field name="arch" type="xml">
+                <!-- Custom -->
+                <field name="code" position="attributes">
+                    <attribute name="required">False</attribute>
+                </field>
+                <xpath expr="/form/sheet/group" position="attributes">
+                    <attribute name="col">1</attribute>
+                </xpath>
+                <!-- Hidden -->
+                <field name="code" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="sequence" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <!-- standard.division inherit tree view -->
+        <record id="view_standard_division_tree_custom" model="ir.ui.view">
+            <field name="name">standard.division.inherit.view.tree</field>
+            <field name="model">standard.division</field>
+            <field name="inherit_id" ref="school.view_standard_division_tree"/>
+            <field name="arch" type="xml">
+                <!-- Hidden -->
+                <field name="code" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="sequence" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
             </field>
         </record>
         
