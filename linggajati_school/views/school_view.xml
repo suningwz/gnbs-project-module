@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- school.standard inherit form view -->
+        <record id="view_school_standard_form_custom" model="ir.ui.view">
+            <field name="name">school.standard.inherit.view.form</field>
+            <field name="model">school.standard</field>
+            <field name="inherit_id" ref="school.view_school_standard_form"/>
+            <field name="arch" type="xml">
+                <!-- Hidden -->
+                <field name="medium_id" position="attributes">
+                    <attribute name="required">False</attribute>
+                </field>
+                <field name="medium_id" position="replace"/>
+            </field>
+        </record>
+
+        <!-- school.standard inherit tree view -->
+        <record id="view_school_standard_tree_custom" model="ir.ui.view">
+            <field name="name">school.standard.inherit.view.tree</field>
+            <field name="model">school.standard</field>
+            <field name="inherit_id" ref="school.view_school_standard_tree"/>
+            <field name="arch" type="xml">
+                <!-- Hidden -->
+                <field name="medium_id" position="replace"/>
+            </field>
+        </record>
+
+        <!-- school.standard inherit kanban view -->
+        <record id="school_standard_kanban_view_custom" model="ir.ui.view">
+            <field name="name">school.standard.inherit.view.kanban</field>
+            <field name="model">school.standard</field>
+            <field name="inherit_id" ref="school.school_standard_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[3]" position="replace"/>
+                <!-- <field name="medium_id" position="replace"/> -->
+            </field>
+        </record>
+        
+    </data>
+</odoo>

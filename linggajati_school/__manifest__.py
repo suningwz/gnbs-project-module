@@ -28,6 +28,7 @@
         'views/student_view.xml',
         'views/menu.xml',
         'views/school_fees_view.xml',
+        'views/school_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
