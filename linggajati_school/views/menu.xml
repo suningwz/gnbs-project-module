@@ -43,10 +43,5 @@
         <record id="school.menu_class_room" model="ir.ui.menu">
             <field name="name">Room</field>
         </record>
-        <!-- <menuitem id="menu_school_standard_form" name="Standards" parent="menu_configuration" />
-        <menuitem id="menu_sub_school_standard_form" name="Classes" parent="menu_school_standard_form" action="action_school_standard_form" />
-        <menuitem id="menu_standard_standard_form" name="Standards" parent="menu_school_standard_form" action="action_standard_standard_form" />
-        <menuitem id="menu_standard_division_form" name="Divisions" parent="menu_school_standard_form" action="action_standard_division_form" />
-        <menuitem id="menu_class_room" name="Class Room" parent="menu_school_standard_form" action="action_class_room"/> -->
     </data>
 </odoo>
