@@ -108,6 +108,9 @@
                 <xpath expr="/form/sheet/notebook/page[3]" position="attributes"> <!-- References -->
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="/form/sheet/notebook/page[6]" position="attributes"> <!-- Remarks -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
 
             </field>
         </record>
@@ -219,7 +222,10 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="/form/sheet/notebook/page[10]" position="attributes"> <!-- History -->
-                    <!-- <attribute name="invisible">1</attribute> -->
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page[9]" position="attributes"> <!-- Remarks -->
+                    <attribute name="invisible">1</attribute>
                 </xpath>
 
             </field>
