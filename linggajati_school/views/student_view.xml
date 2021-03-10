@@ -231,5 +231,21 @@
             </field>
         </record>
 
+        <!-- student.student inherit kanban form 1 view -->
+        <record id="student_student_kanban_view_custom" model="ir.ui.view">
+            <field name="name">student.student.inherit.view.kanban</field>
+            <field name="model">student.student</field>
+            <field name="inherit_id" ref="school.student_student_kanban_view"/>
+            <field name="arch" type="xml">
+                <!-- Rename -->
+                <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td[2]/table/tr[2]/td[1]" position="replace">
+                    <td>Level : </td>
+                </xpath>
+                <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td[2]/table/tr[3]/td[1]" position="replace">
+                    <td>Register Date : </td>
+                </xpath>
+            </field>
+        </record>
+
     </data>
 </odoo>

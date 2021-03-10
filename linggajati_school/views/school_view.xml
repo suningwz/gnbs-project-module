@@ -51,8 +51,7 @@
                 <!-- Hidden -->
                 <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[3]" position="replace"/>
                 <!-- Custom -->
-                <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[1]" position="replace"/>
-                <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[1]" position="before">
+                <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[1]" position="replace">
                     <div>
                         Level :-
                         <field name="standard_id" />
