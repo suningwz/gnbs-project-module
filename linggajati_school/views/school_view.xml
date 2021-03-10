@@ -11,6 +11,9 @@
                 <field name="medium_id" position="attributes">
                     <attribute name="required">False</attribute>
                 </field>
+                <xpath expr="/form/sheet/separator" position="attributes">
+                    <attribute name="string">Class Information</attribute>
+                </xpath>
                 <!-- Hidden -->
                 <field name="medium_id" position="replace"/>
                 <field name="roll_no" position="replace"/>
@@ -25,6 +28,12 @@
             <field name="arch" type="xml">
                 <!-- Hidden -->
                 <field name="medium_id" position="replace"/>
+
+                <!-- Custom -->
+                <field name="user_id" position="before">
+                    <field name="division_id"/>
+                </field>
+                <xpath expr="/tree/field[4]" position="replace"/>
             </field>
         </record>
 
@@ -36,6 +45,14 @@
             <field name="arch" type="xml">
                 <!-- Hidden -->
                 <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[3]" position="replace"/>
+                <!-- Custom -->
+                <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[1]" position="replace"/>
+                <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td/div[2]/div[1]" position="before">
+                    <div>
+                        Level :-
+                        <field name="standard_id" />
+                    </div>
+                </xpath>
             </field>
         </record>
 
