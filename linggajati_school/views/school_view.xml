@@ -1,6 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
+        <!-- Modify Action Window -->
+        <record id="school.action_standard_standard_form" model="ir.actions.act_window">
+            <field name="name">Levels</field>
+        </record>
+
         <!-- school.standard inherit form view -->
         <record id="view_school_standard_form_custom" model="ir.ui.view">
             <field name="name">school.standard.inherit.view.form</field>
