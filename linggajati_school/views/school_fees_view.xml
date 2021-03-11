@@ -20,9 +20,9 @@
                 <!-- Create Smart Button-->
                 <xpath expr="/form/sheet/div[1]" position="before">
                     <div class="oe_button_box" name="buttons">
-                        <button name="%(action_stu_fees_form)d" type="action" class="oe_inline oe_stat_button" groups="school.group_school_administration,school.group_school_student" attrs="{'invisible':[('state', 'in', ['draft','terminate','alumni','cancel'])]}">
-                            <img src="../school_fees/static/description/icon.png" alt="logo"
-                                style="height:25px;width:50px;float:left;"/>
+                        <button name="%(action_stu_fees_form)d" type="action" class="oe_inline oe_stat_button" groups="school.group_school_administration,school.group_school_student" attrs="{'invisible':[('state', 'in', ['draft','terminate','alumni','cancel'])]}" icon="fa-pencil-square-o">
+                            <!-- <img src="../school_fees/static/description/icon.png" alt="logo"
+                                style="height:25px;width:50px;float:left;"/> -->
                             <lable style="">Invoiced</lable>
                         </button>
                     </div>
@@ -68,8 +68,38 @@
                         </field>
                     </page>
                 </xpath>
-                <!-- Fees Receipt rubah jadi invoiced langsung dari file asli -->
                 <!-- icon="fa-pencil-square-o" icon untuk invoice -->
+            </field>
+        </record>
+
+        <!-- student.student inherit form view (Modify Smart Button Style) -->
+        <record id="view_student_student_form2_custom" model="ir.ui.view">
+            <field name="name">student.student.inherit.view.form</field>
+            <field name="model">student.student</field>
+            <field name="inherit_id" ref="school_fees.view_student_student_form2"/>
+            <field name="arch" type="xml">
+                <!-- Custom -->
+                <xpath expr="//button/lable" position="replace">
+                    <lable style="">Invoiced</lable>
+                </xpath>
+                <!-- <xpath expr="//button/lable" position="replace"/> -->
+                <xpath expr="//button/img" position="replace"/>
+                <xpath expr="//button[@class='oe_inline oe_stat_button']" position="attributes">
+                <!-- <xpath expr="//button[@class='oe_inline oe_stat_button']" position="replace"> -->
+                    <!-- <button name="%(action_stu_fees_form)d" type="action" class="oe_inline oe_stat_button" attrs="{'invisible':[('state', 'in', ['draft','terminate','alumni','cancel'])]}" groups="school.group_school_administration,school.group_school_student" icon="fa-pencil-square-o">
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="total_invoiced" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                            </span>
+                            <span class="o_stat_text">Invoiced</span>
+                        </div>
+                    </button> -->
+                    <attribute name="icon">fa-pencil-square-o</attribute>
+                </xpath>
+                <!-- <xpath expr="//button" position="attributes">
+                    <attribute name="icon">fa-pencil-square-o</attribute>
+                    <attribute name="attrs">{'icon': fa-pencil-square-o}</attribute>
+                </xpath> -->
             </field>
         </record>
     </data>
