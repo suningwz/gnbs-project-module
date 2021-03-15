@@ -8,6 +8,7 @@ class Student(models.Model):
     admission_date = fields.Date(string='Register Date')
     standard_id = fields.Many2one(string='Class')
     date_of_birth = fields.Date(string='Date of Birth')
+    previous_school_ids = fields.One2many(string='School History Details')
 
     # Add State
     state = fields.Selection([('draft', 'Draft'),
@@ -18,7 +19,12 @@ class Student(models.Model):
                              'Status', readonly=True, default="draft")
 
     fees_receipt_ids = fields.One2many(comodel_name='student.payslip', inverse_name='student_id', string='Fees Receipt')
-    previous_school_ids = fields.One2many(string='School History Details')
+    invoice_count = fields.Integer(string=' ini invoices coy', compute="_compute_invoice_count")
+    
+    def _compute_invoice_count(self):
+        for record in self:
+            record.invoice_count = len(record.fees_receipt_ids)
+
     # Bikin error Contacts require a name
     # name = fields.Char('Description')
     
@@ -26,3 +32,16 @@ class Student(models.Model):
     #                      default=lambda self: _('/'))
     # fees_receipt_ids one2many
     # llu isi di view dengn fee receipt ids ini, lalu upgrade, coba lihat muncul atau tidak, kalau tidak muncul berarti perlu ditambahkan field description dll di model ini
+
+    # @api.multi
+    # def _compute_taken_seats(self):
+    #     for record in self:
+    #         if not record.min_attendee:
+    #             record.taken_seats = 0.0
+    #         else:
+    #             record.taken_seats = 100.0 * (len(record.attendee_ids) / record.min_attendee)
+
+    # @api.multi
+    # def _compute_count_invoiced(self):
+    #  for invoiced in self:
+    #      invoiced.associate_count = len(invoiced.associate_ids)
