@@ -21,8 +21,18 @@ class SchoolStandard(models.Model):
     name = fields.Char(string='Name')
     standard_id = fields.Many2one(string='Level')
 
+    # Modify
+    medium_id = fields.Many2one(required=False)
+    
+
 class StandardStandard(models.Model):
     _inherit = 'standard.standard'
+
+    # Modify
+    code = fields.Char(required=False)
+
+class StandardDivision(models.Model):
+    _inherit = 'standard.division'
 
     # Modify
     code = fields.Char(required=False)
