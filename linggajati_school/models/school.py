@@ -20,4 +20,10 @@ class SchoolStandard(models.Model):
     # Rename
     name = fields.Char(string='Name')
     standard_id = fields.Many2one(string='Level')
+
+class StandardStandard(models.Model):
+    _inherit = 'standard.standard'
+
+    # Modify
+    code = fields.Char(required=False)
     
