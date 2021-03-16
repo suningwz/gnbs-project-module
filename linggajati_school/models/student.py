@@ -26,13 +26,15 @@ class Student(models.Model):
             record.invoice_count = len(record.fees_receipt_ids)
 
         
-    @api.model
-    def _get_default_country(self):
-        country = self.env['res.country'].search([('code', '=', 'ID')], limit=1)
-        return country
+    # @api.model
+    # def _get_default_country(self):
+    #     country = self.env['res.country'].search([('code', '=', 'ID')], limit=1)
+    #     return country
 
-    country_id = fields.Many2one('res.country', string='Country',default=_get_default_country)
-
+    # country_id = fields.Many2one(default=_get_default_country)
+    # country_id = fields.Text(default=_get_default_country)
+    # country_id = fields.Many2many(default=_get_default_country)
+    # country_id = fields.One2many(default=_get_default_country)
 
     # Bikin error Contacts require a name
     # name = fields.Char('Description')
