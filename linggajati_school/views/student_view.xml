@@ -67,6 +67,7 @@
                 <field name="state" position="attributes">
                     <attribute name="statusbar_visible">draft,done,terminate,cancel,alumni</attribute>
                 </field>
+                
                 <!-- Custom Position Tree on a Notebook-->
                 <!-- Parents -->
                 <xpath expr="/form/sheet/notebook/page[2]/field" position="inside">
