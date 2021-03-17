@@ -134,6 +134,18 @@
                 </field>
             </field>
         </record>
+
+        <!-- academic.year inherit tree view -->
+        <record id="view_academic_year_tree" model="ir.ui.view">
+            <field name="name">academic.year.inherit.view.tree</field>
+            <field name="model">academic.year</field>
+            <field name="inherit_id" ref="school.view_academic_year_tree"/>
+            <field name="arch" type="xml">
+                <field name="sequence" position=attributes>
+                    <attribute name="class">text-right</attribute>
+                </field>
+            </field>
+        </record>
         
     </data>
 </odoo>

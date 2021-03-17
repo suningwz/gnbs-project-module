@@ -36,4 +36,11 @@ class StandardDivision(models.Model):
 
     # Modify
     code = fields.Char(required=False)
+
+class AcademicYear(models.Model):
+    _inherit = 'academic.year'
+
+    # Modify
+    sequence = fields.Integer(type="char", class="text-left")
+    
     
