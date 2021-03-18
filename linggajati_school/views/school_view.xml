@@ -141,7 +141,7 @@
             <field name="model">academic.year</field>
             <field name="inherit_id" ref="school.view_academic_year_tree"/>
             <field name="arch" type="xml">
-                <field name="sequence" position=attributes>
+                <field name="sequence" position="attributes">
                     <attribute name="class">text-right</attribute>
                 </field>
             </field>

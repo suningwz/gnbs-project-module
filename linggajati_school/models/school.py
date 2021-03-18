@@ -8,11 +8,13 @@ class StudentPreviousSchool(models.Model):
     admission_date = fields.Date('Start Date')
     course_id = fields.Many2one(string='Class')
 
+
 class StudentFamilyContact(models.Model):
     _inherit = 'student.family.contact'
 
     # Rename
     relation = fields.Many2one(string='Family Status')
+
 
 class SchoolStandard(models.Model):
     _inherit = 'school.standard'
@@ -23,7 +25,7 @@ class SchoolStandard(models.Model):
 
     # Modify
     medium_id = fields.Many2one(required=False)
-    
+
 
 class StandardStandard(models.Model):
     _inherit = 'standard.standard'
@@ -31,16 +33,15 @@ class StandardStandard(models.Model):
     # Modify
     code = fields.Char(required=False)
 
+
 class StandardDivision(models.Model):
     _inherit = 'standard.division'
 
     # Modify
     code = fields.Char(required=False)
 
-class AcademicYear(models.Model):
-    _inherit = 'academic.year'
+# class AcademicYear(models.Model):
+#     _inherit = 'academic.year'
 
-    # Modify
-    sequence = fields.Integer(type="char", class="text-left")
-    
-    
+#     # Modify
+#     sequence = fields.Integer(type="char", class="text-left")
