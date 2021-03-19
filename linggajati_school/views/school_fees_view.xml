@@ -101,5 +101,17 @@
             </field>
         </record>
 
+        <!-- student.fees.register inherit tree view -->
+        <record id="view_student_fees_register_tree_custom" model="ir.ui.view">
+            <field name="name">student.fees.register.inherit.view.tree</field>
+            <field name="model">student.fees.register</field>
+            <field name="inherit_id" ref="school_fees.view_student_fees_register_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="standard_id"/>
+                </field>
+            </field>
+        </record>
+
     </data>
 </odoo>
