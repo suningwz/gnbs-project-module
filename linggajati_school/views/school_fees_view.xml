@@ -85,7 +85,7 @@
             </field>
         </record>
 
-        <!-- student.payslip inherit form view -->
+        <!-- student.receipts inherit form view -->
         <record id="view_student_payslip_form_custom" model="ir.ui.view">
             <field name="name">student.payslip.inherit.view.form</field>
             <field name="model">student.payslip</field>
@@ -110,6 +110,16 @@
                 <field name="name" position="after">
                     <field name="standard_id"/>
                 </field>
+            </field>
+        </record>
+
+        <!-- student.fees.head inherit tree view -->
+        <record id="view_student_fees_structure_line_tree_custom" model="ir.ui.view">
+            <field name="name">student.fees.structure.line.inherit.view.tree</field>
+            <field name="model">student.fees.structure.line</field>
+            <field name="inherit_id" ref="school_fees.view_student_fees_structure_line_tree"/>
+            <field name="arch" type="xml">
+                <field name="sequence" position="replace"/>
             </field>
         </record>
 
