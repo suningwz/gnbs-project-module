@@ -40,8 +40,8 @@ class StandardDivision(models.Model):
     # Modify
     code = fields.Char(required=False)
 
-# class AcademicYear(models.Model):
-#     _inherit = 'academic.year'
+class AcademicYear(models.Model):
+    _inherit = 'academic.year'
 
-#     # Modify
-#     sequence = fields.Integer(type="char", class="text-left")
+    # Modify
+    sequence = fields.Char('Sequence', required=True, help="Sequence order you want to see this year.")
