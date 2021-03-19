@@ -1,14 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-        <!-- Modify Action Window -->
-        
-        <record id="school.action_student_student_form_2" model="ir.actions.act_window">
-            <field name="name">Student Register</field>
-        </record>
-
         <!-- Modify Form View -->
-    
         <!-- student.student inherit form 2 view -->
         <record id="view_student_student_form_2_custom" model="ir.ui.view">
             <field name="name">student.student.inherit.view.form</field>

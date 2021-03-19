@@ -3,20 +3,43 @@
     <data>
         <!-- Modify Menu -->
 
-        <!-- Rename menu root-->
+        <!-- Rename Menu Root-->
         <record id="school.menu_ems" model="ir.ui.menu">
             <field name="name">School</field>
         </record>
-        <!-- Rename menu category-->
+
+        <!-- Rename Menu Category-->
         <record id="school.admission_register" model="ir.ui.menu">
             <field name="name">Admission</field>
         </record>
-        <!-- Rename menu action or submenu-->
+
+        <!-- Rename Sub Menu -->
         <record id="school.menu_admission_form" model="ir.ui.menu">
             <field name="name">Student Register</field>
         </record>
         <record id="school.menu_student_alumni" model="ir.ui.menu">
             <field name="name">Graduate/Terminate</field>
+        </record>
+        <record id="school.menu_school_standard_form" model="ir.ui.menu">
+            <field name="name">School Class</field>
+        </record>
+        <record id="school.menu_sub_school_standard_form" model="ir.ui.menu">
+            <field name="name">Classes</field>
+        </record>
+        <record id="school.menu_standard_standard_form" model="ir.ui.menu">
+            <field name="name">Levels</field>
+        </record>
+        <record id="school.menu_standard_division_form" model="ir.ui.menu">
+            <field name="name">Divisions</field>
+        </record>
+        <record id="school.menu_class_room" model="ir.ui.menu">
+            <field name="name">Room</field>
+        </record>
+        <record id="school_fees.menu_student_payslip" model="ir.ui.menu">
+            <field name="name">Fees Students</field>
+        </record>
+        <record id="school_fees.menu_student_fees_register" model="ir.ui.menu">
+            <field name="name">Fees Classes</field>
         </record>
 
         <!-- Hidden Sub Menu -->
@@ -42,21 +65,19 @@
             <field name="groups_id" eval="[(6,0,[ref('make_invisible')])]"/>
         </record>
 
-        <!-- Rename Sub Menu -->
-        <record id="school.menu_school_standard_form" model="ir.ui.menu">
-            <field name="name">School Class</field>
+        <!-- Modify Action Window -->
+        <record id="school.action_student_student_form_2" model="ir.actions.act_window">
+            <field name="name">Student Register</field>
         </record>
-        <record id="school.menu_sub_school_standard_form" model="ir.ui.menu">
-            <field name="name">Classes</field>
-        </record>
-        <record id="school.menu_standard_standard_form" model="ir.ui.menu">
+        <record id="school.action_standard_standard_form" model="ir.actions.act_window">
             <field name="name">Levels</field>
         </record>
-        <record id="school.menu_standard_division_form" model="ir.ui.menu">
-            <field name="name">Divisions</field>
+        <record id="school_fees.action_student_payslip_form" model="ir.actions.act_window">
+            <field name="name">Fees Students</field>
         </record>
-        <record id="school.menu_class_room" model="ir.ui.menu">
-            <field name="name">Room</field>
+        <record id="school_fees.action_student_fees_register_form" model="ir.actions.act_window">
+            <field name="name">Fees Classes</field>
         </record>
+
     </data>
 </odoo>
