@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-
+import time
 
 class Student(models.Model):
     _inherit = 'student.student'
@@ -22,10 +22,12 @@ class Student(models.Model):
     fees_receipt_ids = fields.One2many(comodel_name='student.payslip', inverse_name='student_id', string='Fees Receipt')
     invoice_count = fields.Integer(string=' ini invoices coy', compute="_compute_invoice_count")
     
+    # Invoice Count
     def _compute_invoice_count(self):
         for record in self:
             record.invoice_count = len(record.fees_receipt_ids)
-        
+            
+    # # Auto Indonesia
     # @api.model
     # def _get_default_country(self):
     #     country = self.env['res.country'].search([('code', '=', 'ID')], limit=1)
@@ -35,24 +37,48 @@ class Student(models.Model):
     # country_id = fields.Text(default=_get_default_country)
     # country_id = fields.Many2many(default=_get_default_country)
     # country_id = fields.One2many(default=_get_default_country)
-
-    # Bikin error Contacts require a name
-    # name = fields.Char('Description')
     
-    # number = fields.Char('Number', readonly=True,
-    #                      default=lambda self: _('/'))
-    # fees_receipt_ids one2many
-    # llu isi di view dengn fee receipt ids ini, lalu upgrade, coba lihat muncul atau tidak, kalau tidak muncul berarti perlu ditambahkan field description dll di model ini
-
-    # @api.multi
-    # def _compute_taken_seats(self):
-    #     for record in self:
-    #         if not record.min_attendee:
-    #             record.taken_seats = 0.0
-    #         else:
-    #             record.taken_seats = 100.0 * (len(record.attendee_ids) / record.min_attendee)
-
-    # @api.multi
-    # def _compute_count_invoiced(self):
-    #  for invoiced in self:
-    #      invoiced.associate_count = len(invoiced.associate_ids)
+    # Modify ID Student
+    @api.multi
+    def admission_done(self):
+        record = super(Student, self).admission_done()
+        '''Method to confirm admission'''
+        school_standard_obj = self.env['school.standard']
+        ir_sequence = self.env['ir.sequence']
+        student_group = self.env.ref('school.group_school_student')
+        emp_group = self.env.ref('base.group_user')
+        for rec in self:
+            if not rec.standard_id:
+                raise ValidationError(_('''Please select class!'''))
+            if rec.standard_id.remaining_seats <= 0:
+                raise ValidationError(_('Seats of class %s are full'
+                                        ) % rec.standard_id.standard_id.name)
+            domain = [('school_id', '=', rec.school_id.id)]
+            # Checks the standard if not defined raise error
+            if not school_standard_obj.search(domain):
+                raise except_orm(_('Warning'),
+                                 _('''The standard is not defined in
+                                     school'''))
+            # Assign group to student
+            rec.user_id.write({'groups_id': [(6, 0, [emp_group.id,
+                                                     student_group.id])]})
+            # Assign roll no to student
+            number = 1
+            for rec_std in rec.search(domain):
+                rec_std.roll_no = number
+                number += 1
+            # Assign registration code to student
+            reg_code = ir_sequence.next_by_code('student.registration')
+            registation_code = (str(rec.school_id.state_id.name) + str('/') +
+                                str(rec.school_id.city) + str('/') +
+                                str(rec.school_id.name) + str('/') +
+                                str(reg_code))
+            stu_code = ir_sequence.next_by_code('student.code')
+            student_code = (str('STD') + str(rec.year.code) +
+                            str(rec.school_id.code) +
+                            str(stu_code))
+            rec.write({'state': 'done',
+                       'admission_date': time.strftime('%Y-%m-%d'),
+                       'student_code': student_code,
+                       'reg_code': registation_code})
+        return record
