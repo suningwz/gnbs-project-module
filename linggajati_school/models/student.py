@@ -9,6 +9,7 @@ class Student(models.Model):
     standard_id = fields.Many2one(string='Class')
     date_of_birth = fields.Date(string='Date of Birth')
     previous_school_ids = fields.One2many(string='School History Details')
+    student_code = fields.Char('Student ID')
 
     # Add State
     state = fields.Selection([('draft', 'Draft'),
@@ -24,7 +25,6 @@ class Student(models.Model):
     def _compute_invoice_count(self):
         for record in self:
             record.invoice_count = len(record.fees_receipt_ids)
-
         
     # @api.model
     # def _get_default_country(self):

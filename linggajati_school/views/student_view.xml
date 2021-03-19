@@ -51,7 +51,8 @@
                     <field name="date_of_birth"/>
                     <field name="age"/>
                     <field name="admission_date"/>
-                    <field name="pid" readonly="1"/>
+                    <!-- <field name="pid" readonly="1"/> -->
+                    <field name="student_code" readonly="1" />
                 </field>
                 <!-- Custom Other -->
                 <field name="parent_id" position="attributes">
@@ -161,7 +162,8 @@
                     <field name="date_of_birth"/>
                     <field name="age"/>
                     <field name="admission_date"/>
-                    <field name="pid" readonly="1"/>
+                    <!-- <field name="pid" readonly="1"/> -->
+                    <field name="student_code" readonly="1" />
                 </field>
                 <!-- Custom Other -->
                 <field name="parent_id" position="attributes">
