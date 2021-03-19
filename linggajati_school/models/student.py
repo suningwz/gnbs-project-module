@@ -20,7 +20,7 @@ class Student(models.Model):
                              'Status', readonly=True, default="draft")
 
     fees_receipt_ids = fields.One2many(comodel_name='student.payslip', inverse_name='student_id', string='Fees Receipt')
-    invoice_count = fields.Integer(string=' ini invoices coy', compute="_compute_invoice_count")
+    invoice_count = fields.Integer(compute="_compute_invoice_count")
     
     # Invoice Count
     def _compute_invoice_count(self):
@@ -28,16 +28,13 @@ class Student(models.Model):
             record.invoice_count = len(record.fees_receipt_ids)
             
     # # Auto Indonesia
-    # @api.model
-    # def _get_default_country(self):
-    #     country = self.env['res.country'].search([('code', '=', 'ID')], limit=1)
-    #     return country
+    @api.model
+    def _get_default_country(self):
+        country = self.env['res.country'].search([('code', '=', 'ID')])
+        return country
 
-    # country_id = fields.Many2one(default=_get_default_country)
-    # country_id = fields.Text(default=_get_default_country)
-    # country_id = fields.Many2many(default=_get_default_country)
-    # country_id = fields.One2many(default=_get_default_country)
-    
+    country_id_custom = fields.Many2one(comodel_name='res.country', string='Country', default=_get_default_country)
+
     # Modify ID Student
     @api.multi
     def admission_done(self):
