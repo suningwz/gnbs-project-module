@@ -85,5 +85,21 @@
             </field>
         </record>
 
+        <!-- student.payslip inherit form view -->
+        <record id="view_student_payslip_form_custom" model="ir.ui.view">
+            <field name="name">student.payslip.inherit.view.form</field>
+            <field name="model">student.payslip</field>
+            <field name="inherit_id" ref="school_fees.view_student_payslip_form"/>
+            <field name="arch" type="xml">
+                <!-- Rename -->
+                <xpath expr="/form/sheet/group[1]/group[2]" position="attributes">
+                    <attribute name="string" separator=" " add="" remove="">Class Information</attribute>
+                </xpath>
+                <!-- Hidden -->
+                <field name="division_id" position="replace"/>
+                <field name="medium_id" position="replace"/>
+            </field>
+        </record>
+
     </data>
 </odoo>

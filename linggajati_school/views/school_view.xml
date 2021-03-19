@@ -33,7 +33,6 @@
             <field name="arch" type="xml">
                 <!-- Hidden -->
                 <field name="medium_id" position="replace"/>
-
                 <!-- Custom -->
                 <field name="user_id" position="before">
                     <field name="division_id"/>
@@ -141,8 +140,8 @@
             <field name="model">academic.year</field>
             <field name="inherit_id" ref="school.view_academic_year_tree"/>
             <field name="arch" type="xml">
+                <!-- Custom Sequence -->
                 <field name="sequence" position="replace">
-                    <!-- <attribute name="class">text-right</attribute> -->
                     <field name="sequence"  type="char" class="text-left"/>
                 </field>
             </field>

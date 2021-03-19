@@ -8,13 +8,11 @@ class StudentPreviousSchool(models.Model):
     admission_date = fields.Date('Start Date')
     course_id = fields.Many2one(string='Class')
 
-
 class StudentFamilyContact(models.Model):
     _inherit = 'student.family.contact'
 
     # Rename
     relation = fields.Many2one(string='Family Status')
-
 
 class SchoolStandard(models.Model):
     _inherit = 'school.standard'
@@ -25,7 +23,6 @@ class SchoolStandard(models.Model):
 
     # Modify
     medium_id = fields.Many2one(required=False)
-
 
 class StandardStandard(models.Model):
     _inherit = 'standard.standard'
