@@ -68,15 +68,18 @@
                 <field name="state_id" position="attributes">
                     <attribute name="domain">[('country_id','=',country_id_custom)]</attribute>
                 </field>
-                <!-- Add H1 tag on field name & Hide group-->
+                <!-- Field Name : Add H1 tag on field name & Hide group-->
                 <field name="name" position="attributes">
                     <attribute name="invisible" separator=" " add="" remove="">1</attribute>
                 </field>
                 <xpath expr="/form/sheet/div/div/group" position="before">
                     <label for="name" class="oe_edit_only"/>
                     <h1>
-                        <field name="name" placeholder="Student's Name" nolabel="1" required="1" attrs="{'readonly':[('state','=','alumni')]}" style="width:42%%"/>
+                        <field name="name" nolabel="1" required="1" attrs="{'readonly':[('state','=','alumni')]}" style="width:42%%"/>
                     </h1>
+                </xpath>
+                <xpath expr="/form/sheet/div/div/group/field[@name='name']" position="attributes">
+                    <attribute name="placeholder" separator=" " add="" remove="">Student's Name</attribute>
                 </xpath>
 
                 <!-- Custom Position Tree on a Notebook-->
@@ -191,14 +194,14 @@
                     <attribute name="statusbar_visible">done,terminate,alumni</attribute>
                     <attribute name="attrs">{}</attribute>
                 </field>
-                <!-- Add H1 tag on field name & Hide group-->
+                <!-- Field Name : Add H1 tag on field name & Hide group-->
                 <field name="name" position="attributes">
                     <attribute name="invisible" separator=" " add="" remove="">1</attribute>
                 </field>
                 <xpath expr="/form/sheet/div/div/group" position="before">
                     <label for="name" class="oe_edit_only"/>
                     <h1>
-                        <field name="name" placeholder="Student's Name" nolabel="1" required="1" attrs="{'readonly':[('state','=','alumni')]}" style="width:42%%"/>
+                        <field name="name" nolabel="1" required="1" attrs="{'readonly':[('state','=','alumni')]}" style="width:42%%"/>
                     </h1>
                 </xpath>
                 <!-- Custom Position Tree on a Notebook-->
@@ -270,6 +273,14 @@
                 <xpath expr="/kanban/templates/t/div/div/div[2]/table/tr/td[2]/table/tr[3]/td[1]" position="replace">
                     <td>Register Date : </td>
                 </xpath>
+
+                <!-- Hidden -->
+                <field name="middle" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="last" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
             </field>
         </record>
 
