@@ -107,6 +107,7 @@
             <field name="model">student.fees.register</field>
             <field name="inherit_id" ref="school_fees.view_student_fees_register_tree"/>
             <field name="arch" type="xml">
+                <!-- Add Column -->
                 <field name="name" position="after">
                     <field name="standard_id"/>
                 </field>
@@ -119,6 +120,7 @@
             <field name="model">student.fees.structure.line</field>
             <field name="inherit_id" ref="school_fees.view_student_fees_structure_line_tree"/>
             <field name="arch" type="xml">
+                <!-- Hidden -->
                 <field name="sequence" position="replace"/>
             </field>
         </record>
