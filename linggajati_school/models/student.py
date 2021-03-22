@@ -27,7 +27,7 @@ class Student(models.Model):
         for record in self:
             record.invoice_count = len(record.fees_receipt_ids)
             
-    # # Auto Indonesia
+    # Auto Indonesia
     @api.model
     def _get_default_country(self):
         country = self.env['res.country'].search([('code', '=', 'ID')])
@@ -79,3 +79,7 @@ class Student(models.Model):
                        'student_code': student_code,
                        'reg_code': registation_code})
         return record
+
+    # Change Field Name Format
+    middle = fields.Char(required=False)
+    last = fields.Char(required=False)
