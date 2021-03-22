@@ -191,6 +191,16 @@
                     <attribute name="statusbar_visible">done,terminate,alumni</attribute>
                     <attribute name="attrs">{}</attribute>
                 </field>
+                <!-- Add H1 tag on field name & Hide group-->
+                <field name="name" position="attributes">
+                    <attribute name="invisible" separator=" " add="" remove="">1</attribute>
+                </field>
+                <xpath expr="/form/sheet/div/div/group" position="before">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name" placeholder="Student's Name" nolabel="1" required="1" attrs="{'readonly':[('state','=','alumni')]}" style="width:42%%"/>
+                    </h1>
+                </xpath>
                 <!-- Custom Position Tree on a Notebook-->
                 <!-- Parents -->
                 <xpath expr="/form/sheet/notebook/page[2]/field" position="inside">
@@ -219,6 +229,8 @@
                 <field name="website" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
+                <field name="middle" position="replace"/>
+                <field name="last" position="replace"/>
                 <!-- Notebook -->
                 <xpath expr="/form/sheet/notebook/page[1]" position="attributes"> <!-- General -->
                     <attribute name="invisible">1</attribute>
