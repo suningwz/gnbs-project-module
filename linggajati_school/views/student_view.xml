@@ -81,7 +81,6 @@
                 <xpath expr="/form/sheet/div/div/group/field[@name='name']" position="attributes">
                     <attribute name="placeholder" separator=" " add="" remove="">Student's Name</attribute>
                 </xpath>
-
                 <!-- Custom Position Tree on a Notebook-->
                 <!-- Parents -->
                 <xpath expr="/form/sheet/notebook/page[2]/field" position="inside">
@@ -127,6 +126,12 @@
                 </xpath>
                 <xpath expr="/form/sheet/notebook/page[6]" position="attributes"> <!-- Remarks -->
                     <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- Create -->
+                <!-- Create Button -->
+                <xpath expr="//button[@name='cancel_admission']" position="after">
+                    <button class="btn-primary oe_stat_button" icon="fa-check" name="" type="object" string="Invoice" states="" groups="school.group_school_administration"/>
                 </xpath>
 
             </field>
@@ -255,6 +260,12 @@
                 </xpath>
                 <xpath expr="/form/sheet/notebook/page[9]" position="attributes"> <!-- Remarks -->
                     <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- Create -->
+                <!-- Create Button -->
+                <xpath expr="//button[@name='admission_done']" position="after">
+                    <button class="btn-primary oe_stat_button" icon="fa-check" name="" type="object" string="Invoice" states="" groups="school.group_school_administration"/>
                 </xpath>
 
             </field>
