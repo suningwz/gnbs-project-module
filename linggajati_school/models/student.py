@@ -83,52 +83,33 @@ class Student(models.Model):
                        'admission_date': time.strftime('%Y-%m-%d'),
                        'student_code': student_code,
                        'reg_code': registation_code})
-        return record
 
-    # Overriding Invoice
-    # state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirm'),
-    #                           ('pending', 'Pending'), ('paid', 'Paid')],
-    #                          'State', readonly=True, default='draft')
-    # name = fields.Char('Description')
-    # journal_id = fields.Many2one('account.journal', 'Journal', required=False)
-    # fees_structure_id = fields.Many2one('student.fees.structure',
-    #                                     'Fees Structure',
-    #                                     states={'paid': [('readonly', True)]})
-    # student_id = fields.Many2one('student.student', 'Student', required=True)
-
-    # @api.model
-    # def create(self, valuees):
-    #     if valuees.get('name', _('New')) == _('New'):
-    #         valuees['name'] = self.env['ir.sequence'].next_by_code('se.service') or _('New')
-    #     return super(_service, self).create(valuees)
-    # @api.model
-
-    def _create_invoice(self):
-        # import ipdb
-        # ipdb.set_trace()
-
+         # Overriding Invoice
         inv_obj = self.env['student.payslip']
-        # inv_obj = self.env['ir.sequence'].next_by_code('student.payslip')
-        user_id = self.env['res.users'].id
         self.ensure_one()
         invoice = inv_obj.create({
             'name': 'Invoice Biaya Pendaftaran',
             'journal_id': 1,
-            'state': 'draft',
+            # 'state': 'draft',
             'fees_structure_id': 3,
-            # 'student_id': self.env['res.users']
-            # 'student_id': user_id
             'student_id': self.id
-            
-            # 'student_id': inv_obj.student_id
-            # 'student_id': inv_obj.search([('student_id', '=', 'active_id')])
         })
-        # print('Ini adalah user_id', user_id)
-        # inv_obj.search([('student_id', '=', 'active_id')])
-        return invoice
 
-    def create_invoice(self):
-        self._create_invoice()
-    
-    # user_id = fields.Many2one('res.users', 'User ID', ondelete="cascade",
-    #                           required=True, delegate=True)
+        return invoice, record
+
+    # Overriding Invoice
+    # def _create_invoice(self):
+    #     inv_obj = self.env['student.payslip']
+    #     self.ensure_one()
+    #     invoice = inv_obj.create({
+    #         'name': 'Invoice Biaya Pendaftaran',
+    #         'journal_id': 1,
+    #         # 'state': 'draft',
+    #         'fees_structure_id': 3,
+    #         'student_id': self.id
+    #     })
+
+    #     return invoice
+
+    # def create_invoice(self):
+    #     self._create_invoice()
