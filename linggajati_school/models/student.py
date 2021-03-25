@@ -38,7 +38,7 @@ class Student(models.Model):
         country = self.env['res.country'].search([('code', '=', 'ID')])
         return country
 
-    country_id_custom = fields.Many2one(comodel_name='res.country', string='Country', default=_get_default_country)
+    country_id_custom = fields.Many2one(comodel_name='res.country', string='Country', default=_get_default_country, store=True)
 
     # Modify ID Student
     @api.multi
@@ -98,18 +98,65 @@ class Student(models.Model):
         return invoice, record
 
     # Overriding Invoice
-    # def _create_invoice(self):
-    #     inv_obj = self.env['student.payslip']
-    #     self.ensure_one()
-    #     invoice = inv_obj.create({
-    #         'name': 'Invoice Biaya Pendaftaran',
-    #         'journal_id': 1,
-    #         # 'state': 'draft',
-    #         'fees_structure_id': 3,
-    #         'student_id': self.id
-    #     })
+    def _create_invoice(self):
+        inv_obj = self.env['student.payslip']
+        self.ensure_one()
+        invoice = inv_obj.create(
+            {
+                'name': 'Invoice Biaya Pendaftaran',
+                'journal_id': 1,
+                # 'state': 'confirm',
+                'fees_structure_id': 3,
+                'student_id': self.id
+            }
+        )
+        for rec in inv_obj:
+            lines = []
+            for data in rec.fees_structure_id.line_ids or []:
+                line_vals = {'slip_id': rec.id,
+                            'name': data.name,
+                            'code': data.code,
+                            'type': data.type,
+                            'account_id': data.account_id.id,
+                            'amount': data.amount,
+                            'currency_id': data.currency_id.id or False,
+                            'currency_symbol': data.currency_symbol or False}
+                lines.append((0, 0, line_vals))
+            rec.write({'line_ids': lines})        
 
-    #     return invoice
+        return invoice
 
-    # def create_invoice(self):
-    #     self._create_invoice()
+    def create_invoice(self):
+        self._create_invoice()
+    
+    @api.multi
+    def payslip_confirm(self):
+        '''Method to confirm payslip'''
+        for rec in self:
+            if not rec.journal_id:
+                raise ValidationError(_('Kindly, Select Account Journal!'))
+            if not rec.fees_structure_id:
+                raise ValidationError(_('Kindly, Select Fees Structure!'))
+            lines = []
+            for data in rec.fees_structure_id.line_ids or []:
+                line_vals = {'slip_id': rec.id,
+                             'name': data.name,
+                             'code': data.code,
+                             'type': data.type,
+                             'account_id': data.account_id.id,
+                             'amount': data.amount,
+                             'currency_id': data.currency_id.id or False,
+                             'currency_symbol': data.currency_symbol or False}
+                lines.append((0, 0, line_vals))
+            rec.write({'line_ids': lines})
+            # Compute amount
+            amount = 0
+            for data in rec.line_ids:
+                amount += data.amount
+            rec.register_id.write({'total_amount': rec.total})
+            rec.write({'total': amount,
+                       'state': 'confirm',
+                       'due_amount': amount,
+                       'currency_id': rec.company_id.currency_id.id or False
+                       })
+        

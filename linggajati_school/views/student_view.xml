@@ -199,6 +199,13 @@
                     <attribute name="statusbar_visible">done,terminate,alumni</attribute>
                     <attribute name="attrs">{}</attribute>
                 </field>
+                <!-- Change format of country -->
+                <field name="country_id" position="replace">
+                    <field name="country_id_custom" placeholder="Country" class="o_address_country,oe_no_button" required="1" options="{&quot;no_open&quot;: True}" attrs="{'readonly':[('state','=','alumni')]}"/>
+                </field>
+                <field name="state_id" position="attributes">
+                    <attribute name="domain">[('country_id','=',country_id_custom)]</attribute>
+                </field>
                 <!-- Field Name : Add H1 tag on field name & Hide group-->
                 <field name="name" position="attributes">
                     <attribute name="invisible" separator=" " add="" remove="">1</attribute>
