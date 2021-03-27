@@ -92,31 +92,28 @@ class Student(models.Model):
 
     # Method for create invoice on registration
     def create_invoice(self):
-        name = "Invoice Biaya Pendaftaran"
-        fees_structure_id = 3
         journal_id = 1
-        self._create_invoice(name, fees_structure_id, journal_id, date.today())
+        self._create_invoice(journal_id, date.today(), "registration")
 
     # Overriding Invoice
     @api.multi
-    def _create_invoice(self, name, fees_structure_id, journal_id, date):
+    def _create_invoice(self, journal_id, date, structure_for):
+        
+        # Get database
+        std_fees_structure = self.env['student.fees.structure'].search([('structure_for', '=', structure_for)])
         std_payslip = self.env['student.payslip']
         self.ensure_one()
+        
         # Define student.payslip
         payslip =   {
                         'student_id': self.id,
-                        'name': name,
-                        'fees_structure_id': fees_structure_id,
+                        'name': std_fees_structure.name,
+                        'fees_structure_id': std_fees_structure.id,
                         'journal_id': journal_id,
                         'date' : date,
                     }
 
         # Define student.payslip.line
-        
-
-        std_fees_structure = self.env['student.fees.structure'].search([('id', '=', fees_structure_id)])
-        std_fees_structure_2 = self.env['student.fees.structure'].search([('structure_for', '=', "registration")])
-        std_fees_structure_2 = self.env['student.fees.structure'].search([('structure_for', '=', "monthly")])
         lines = []
         for data in std_fees_structure.line_ids or []:
             line_vals = {'slip_id': self.id,
@@ -132,16 +129,15 @@ class Student(models.Model):
         # Compute amount
         amount = 0
         for data in std_fees_structure.line_ids:
-        # for data in std_payslip.line_ids:
             amount += data.amount
-        std_payslip.register_id.write({'total_amount': std_payslip.total})
-                
-                # Fix state is confirm, for develop change to draft
+        std_payslip.register_id.write({'total_amount': std_payslip.total})        
+        # Fix state is confirm, for develop change to draft
         payslip_total = {'total': amount,
                         #  'state': 'confirm',
                          'due_amount': amount,
                          'currency_id': std_payslip.company_id.currency_id.id or False
                         }
+
         # Merge
         payslip.update(payslip_total)
 
@@ -155,13 +151,11 @@ class Student(models.Model):
     def _generate_invoice(self):
 
         # Define
-        name = "Invoice Biaya Bulanan"
-        fees_structure_id = 3
         journal_id = 1
         interval = 1
 
         # Loop for generate
         while interval <= 12:
             date_payslip = date.today()+relativedelta(months=interval, day=1)
-            self._create_invoice(name, fees_structure_id, journal_id, date_payslip)
+            self._create_invoice(journal_id, date_payslip, "monthly")
             interval += 1

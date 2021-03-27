@@ -137,12 +137,6 @@
                 </xpath>
 
                 <!-- Add Field -->
-                <!-- <field name="code" position="after">
-                    <field name="is_generate"/>
-                </field>
-                <field name="code" position="after">
-                    <field name="is_registration"/>
-                </field> -->
                 <field name="code" position="after">
                     <field name="structure_for"/>
                 </field>
@@ -156,13 +150,7 @@
             <field name="model">student.fees.structure</field>
             <field name="inherit_id" ref="school_fees.view_student_fees_structre_tree"/>
             <field name="arch" type="xml">
-                 <!-- Add Field -->
-                <!-- <field name="code" position="after">
-                    <field name="is_generate"/>
-                </field>
-                <field name="code" position="after">
-                    <field name="is_registration"/>
-                </field> -->
+                <!-- Add Field -->
                 <field name="code" position="after">
                     <field name="structure_for"/>
                 </field>
