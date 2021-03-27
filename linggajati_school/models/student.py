@@ -1,4 +1,6 @@
 from odoo import api, fields, models
+from datetime import datetime, date
+from dateutil.relativedelta import relativedelta
 import time
 
 class Student(models.Model):
@@ -83,83 +85,34 @@ class Student(models.Model):
                        'student_code': student_code,
                        'reg_code': registation_code})
 
-        # Overriding student.payslip
-        std_payslip = self.env['student.payslip']
-        self.ensure_one()
-        payslip = {
-                    'name': 'Invoice Biaya Pendaftaran',
-                    'journal_id': 1,
-                    # 'state': 'confirm',
-                    'fees_structure_id': 3,
-                    'student_id': self.id,
-                  }
-        
-        # Overriding Student.fees.structure
-        std_fees_structure = self.env['student.fees.structure'].search([('id', '=', 3)])
-        lines = []
-        for data in std_fees_structure.line_ids or []:
-            line_vals = {'slip_id': self.id,
-                            'name': data.name,
-                            'code': data.code,
-                            'type': data.type,
-                            'account_id': data.account_id.id,
-                            'amount': data.amount,
-                            'currency_id': data.currency_id.id or False,
-                            'currency_symbol': data.currency_symbol or False}
-            lines.append((0, 0, line_vals))
-        payslip['line_ids'] = lines
-        # Compute amount
-        amount = 0
-        for data in std_fees_structure.line_ids:
-        # for data in std_payslip.line_ids:
-            amount += data.amount
-        std_payslip.register_id.write({'total_amount': std_payslip.total})
-        payslip_total = {'total': amount,
-                         'state': 'confirm',
-                         'due_amount': amount,
-                         'currency_id': std_payslip.company_id.currency_id.id or False
-                        }
-        # Merge
-        payslip.update(payslip_total)
+        # # Create Invoice
+        self.create_invoice()
 
-        # Create Invoice
-        invoice = std_payslip.create(payslip)
+        return record
 
-        return invoice, record
-
-    def generate_invoice(self):
-        self._generate_invoice()
-
-    # @api.multi
-    def _generate_invoice(self):
-        std_payslip = self.env['student.payslip'].search([('student_id', '=', self.id)])
-        payslip = {
-                    'name': std_payslip.name,
-                    'journal_id': std_payslip.journal_id,
-                    # 'state': std_payslip.name,
-                    'state': 'draft',
-                    'fees_structure_id': std_payslip.fees_structure_id,
-                    'student_id': std_payslip.student_id,
-                    # 'line_ids' : std_payslip.name,
-                  }
-        return self.env['student.payslip'].create(payslip)
+    # Method for create invoice on registration
+    def create_invoice(self):
+        name = "Invoice Biaya Pendaftaran"
+        fees_structure_id = 3
+        journal_id = 1
+        self._create_invoice(name, fees_structure_id, journal_id, date.today())
 
     # Overriding Invoice
     @api.multi
-    def _create_invoice(self):
+    def _create_invoice(self, name, fees_structure_id, journal_id, date):
         std_payslip = self.env['student.payslip']
         self.ensure_one()
         # Define student.payslip
         payslip =   {
-                        'name': 'Invoice Biaya Pendaftaran',
-                        'journal_id': 1,
-                        # 'state': 'confirm',
-                        'fees_structure_id': 3,
                         'student_id': self.id,
+                        'name': name,
+                        'fees_structure_id': fees_structure_id,
+                        'journal_id': journal_id,
+                        'date' : date,
                     }
 
         # Define student.payslip.line
-        std_fees_structure = self.env['student.fees.structure'].search([('id', '=', 3)])
+        std_fees_structure = self.env['student.fees.structure'].search([('id', '=', fees_structure_id)])
         lines = []
         for data in std_fees_structure.line_ids or []:
             line_vals = {'slip_id': self.id,
@@ -178,6 +131,8 @@ class Student(models.Model):
         # for data in std_payslip.line_ids:
             amount += data.amount
         std_payslip.register_id.write({'total_amount': std_payslip.total})
+                
+                # Fix state is confirm, for develop change to draft
         payslip_total = {'total': amount,
                         #  'state': 'confirm',
                          'due_amount': amount,
@@ -187,10 +142,22 @@ class Student(models.Model):
         payslip.update(payslip_total)
 
         return std_payslip.create(payslip)
-        # return invoice
-        # self.env['student.payslip'].payslip_confirm()
 
+    # Method for generate invoice
+    def generate_invoice(self):
+        self._generate_invoice()
 
-    def create_invoice(self):
-        self._create_invoice()
-                
+    @api.multi
+    def _generate_invoice(self):
+
+        # Define
+        name = "Invoice Biaya Bulanan"
+        fees_structure_id = 3
+        journal_id = 1
+        interval = 1
+
+        # Loop for generate
+        while interval <= 12:
+            date_payslip = date.today()+relativedelta(months=interval, day=1)
+            self._create_invoice(name, fees_structure_id, journal_id, date_payslip)
+            interval += 1
