@@ -84,36 +84,22 @@ class Student(models.Model):
                        'student_code': student_code,
                        'reg_code': registation_code})
 
-         # Overriding Invoice
-        inv_obj = self.env['student.payslip']
+        # Overriding student.payslip
+        std_payslip = self.env['student.payslip']
         self.ensure_one()
-        invoice = inv_obj.create({
-            'name': 'Invoice Biaya Pendaftaran',
-            'journal_id': 1,
-            # 'state': 'draft',
-            'fees_structure_id': 3,
-            'student_id': self.id
-        })
-
-        return invoice, record
-
-    # Overriding Invoice
-    def _create_invoice(self):
-        inv_obj = self.env['student.payslip']
-        self.ensure_one()
-        invoice = inv_obj.create(
-            {
-                'name': 'Invoice Biaya Pendaftaran',
-                'journal_id': 1,
-                # 'state': 'confirm',
-                'fees_structure_id': 3,
-                'student_id': self.id
-            }
-        )
-        for rec in inv_obj:
-            lines = []
-            for data in rec.fees_structure_id.line_ids or []:
-                line_vals = {'slip_id': rec.id,
+        payslip = {
+                    'name': 'Invoice Biaya Pendaftaran',
+                    'journal_id': 1,
+                    # 'state': 'confirm',
+                    'fees_structure_id': 3,
+                    'student_id': self.id,
+                  }
+        
+        # Overriding Student.fees.structure
+        std_fees_structure = self.env['student.fees.structure'].search([('id', '=', 3)])
+        lines = []
+        for data in std_fees_structure.line_ids or []:
+            line_vals = {'slip_id': self.id,
                             'name': data.name,
                             'code': data.code,
                             'type': data.type,
@@ -121,42 +107,26 @@ class Student(models.Model):
                             'amount': data.amount,
                             'currency_id': data.currency_id.id or False,
                             'currency_symbol': data.currency_symbol or False}
-                lines.append((0, 0, line_vals))
-            rec.write({'line_ids': lines})        
+            lines.append((0, 0, line_vals))
+        payslip['line_ids'] = lines
+        # Compute amount
+        amount = 0
+        for data in std_fees_structure.line_ids:
+        # for data in std_payslip.line_ids:
+            amount += data.amount
+        std_payslip.register_id.write({'total_amount': std_payslip.total})
+        payslip_total = {'total': amount,
+                         'state': 'pending',
+                         'due_amount': amount,
+                         'currency_id': std_payslip.company_id.currency_id.id or False
+                        }
+        # Merge
+        payslip.update(payslip_total)
 
-        return invoice
+        # Create Invoice
+        invoice = std_payslip.create(payslip)
+
+        return invoice, record
 
     def create_invoice(self):
         self._create_invoice()
-    
-    @api.multi
-    def payslip_confirm(self):
-        '''Method to confirm payslip'''
-        for rec in self:
-            if not rec.journal_id:
-                raise ValidationError(_('Kindly, Select Account Journal!'))
-            if not rec.fees_structure_id:
-                raise ValidationError(_('Kindly, Select Fees Structure!'))
-            lines = []
-            for data in rec.fees_structure_id.line_ids or []:
-                line_vals = {'slip_id': rec.id,
-                             'name': data.name,
-                             'code': data.code,
-                             'type': data.type,
-                             'account_id': data.account_id.id,
-                             'amount': data.amount,
-                             'currency_id': data.currency_id.id or False,
-                             'currency_symbol': data.currency_symbol or False}
-                lines.append((0, 0, line_vals))
-            rec.write({'line_ids': lines})
-            # Compute amount
-            amount = 0
-            for data in rec.line_ids:
-                amount += data.amount
-            rec.register_id.write({'total_amount': rec.total})
-            rec.write({'total': amount,
-                       'state': 'confirm',
-                       'due_amount': amount,
-                       'currency_id': rec.company_id.currency_id.id or False
-                       })
-        
