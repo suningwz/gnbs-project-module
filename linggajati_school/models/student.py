@@ -132,7 +132,7 @@ class Student(models.Model):
         self._generate_invoice()
 
     # @api.multi
-    def _generate_invoice():
+    def _generate_invoice(self):
         std_payslip = self.env['student.payslip'].search([('student_id', '=', self.id)])
         payslip = {
                     'name': std_payslip.name,
@@ -143,7 +143,7 @@ class Student(models.Model):
                     'student_id': std_payslip.student_id,
                     # 'line_ids' : std_payslip.name,
                   }
-        return payslip
+        return self.env['student.payslip'].create(payslip)
 
     # Overriding Invoice
     @api.multi
