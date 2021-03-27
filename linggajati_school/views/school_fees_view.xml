@@ -137,14 +137,35 @@
                 </xpath>
 
                 <!-- Add Field -->
-                <field name="code" position="after">
+                <!-- <field name="code" position="after">
                     <field name="is_generate"/>
                 </field>
-                
                 <field name="code" position="after">
                     <field name="is_registration"/>
+                </field> -->
+                <field name="code" position="after">
+                    <field name="structure_for"/>
                 </field>
 
+            </field>
+        </record>
+
+        <!-- view.student.fees.structure.tree inherit tree view -->
+        <record id="view_student_fees_structre_tree_custom" model="ir.ui.view">
+            <field name="name">view.student.fees.structure.tree.inherit.view.tree</field>
+            <field name="model">student.fees.structure</field>
+            <field name="inherit_id" ref="school_fees.view_student_fees_structre_tree"/>
+            <field name="arch" type="xml">
+                 <!-- Add Field -->
+                <!-- <field name="code" position="after">
+                    <field name="is_generate"/>
+                </field>
+                <field name="code" position="after">
+                    <field name="is_registration"/>
+                </field> -->
+                <field name="code" position="after">
+                    <field name="structure_for"/>
+                </field>
             </field>
         </record>
 
