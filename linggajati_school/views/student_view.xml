@@ -130,8 +130,11 @@
 
                 <!-- Create -->
                 <!-- Create Button -->
-                <xpath expr="//button[@name='cancel_admission']" position="after">
+                <!-- <xpath expr="//button[@name='cancel_admission']" position="after">
                     <button class="btn-primary oe_stat_button" icon="fa-check" name="create_invoice" type="object" string="Invoice" states="" groups="school.group_school_administration"/>
+                </xpath> -->
+                <xpath expr="//button[@name='cancel_admission']" position="after">
+                    <button class="btn-primary oe_stat_button" icon="fa-check" name="generate_invoice" type="object" string="Generate Invoice" attrs="{'invisible':[('state', 'in', ['draft','terminate','alumni','cancel'])]}"  groups="school.group_school_administration"/>
                 </xpath>
 
             </field>
@@ -271,11 +274,11 @@
 
                 <!-- Create -->
                 <!-- Create Button -->
-                <xpath expr="//button[@name='admission_done']" position="after">
+                <!-- <xpath expr="//button[@name='admission_done']" position="after">
                     <button class="btn-primary oe_stat_button" icon="fa-check" name="create_invoice" type="object" string="Invoice" states="" groups="school.group_school_administration"/>
-                </xpath>
+                </xpath> -->
                 <xpath expr="//button[@name='admission_done']" position="after">
-                    <button class="btn-primary oe_stat_button" icon="fa-check" name="generate_invoice" type="object" string="Generate Invoice" states="" groups="school.group_school_administration"/>
+                    <button class="btn-primary oe_stat_button" icon="fa-check" name="generate_invoice" type="object" string="Generate Invoice" attrs="{'invisible':[('state', 'in', ['draft','terminate','alumni','cancel'])]}"  groups="school.group_school_administration"/>
                 </xpath>
 
             </field>
