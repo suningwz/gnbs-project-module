@@ -1,6 +1,5 @@
 from odoo import api, fields, models
 import time
-# import ipdb
 
 class Student(models.Model):
     _inherit = 'student.student'
