@@ -116,7 +116,7 @@ class Student(models.Model):
             amount += data.amount
         std_payslip.register_id.write({'total_amount': std_payslip.total})
         payslip_total = {'total': amount,
-                         'state': 'pending',
+                         'state': 'confirm',
                          'due_amount': amount,
                          'currency_id': std_payslip.company_id.currency_id.id or False
                         }
