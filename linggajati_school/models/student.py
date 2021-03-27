@@ -144,4 +144,54 @@ class Student(models.Model):
                     # 'line_ids' : std_payslip.name,
                   }
         return payslip
+
+    # Overriding Invoice
+    @api.multi
+    def _create_invoice(self):
+        std_payslip = self.env['student.payslip']
+        self.ensure_one()
+        # Define student.payslip
+        payslip =   {
+                        'name': 'Invoice Biaya Pendaftaran',
+                        'journal_id': 1,
+                        # 'state': 'confirm',
+                        'fees_structure_id': 3,
+                        'student_id': self.id,
+                    }
+
+        # Define student.payslip.line
+        std_fees_structure = self.env['student.fees.structure'].search([('id', '=', 3)])
+        lines = []
+        for data in std_fees_structure.line_ids or []:
+            line_vals = {'slip_id': self.id,
+                            'name': data.name,
+                            'code': data.code,
+                            'type': data.type,
+                            'account_id': data.account_id.id,
+                            'amount': data.amount,
+                            'currency_id': data.currency_id.id or False,
+                            'currency_symbol': data.currency_symbol or False}
+            lines.append((0, 0, line_vals))
+        payslip['line_ids'] = lines
+        # Compute amount
+        amount = 0
+        for data in std_fees_structure.line_ids:
+        # for data in std_payslip.line_ids:
+            amount += data.amount
+        std_payslip.register_id.write({'total_amount': std_payslip.total})
+        payslip_total = {'total': amount,
+                        #  'state': 'confirm',
+                         'due_amount': amount,
+                         'currency_id': std_payslip.company_id.currency_id.id or False
+                        }
+        # Merge
+        payslip.update(payslip_total)
+
+        return std_payslip.create(payslip)
+        # return invoice
+        # self.env['student.payslip'].payslip_confirm()
+
+
+    def create_invoice(self):
+        self._create_invoice()
                 
