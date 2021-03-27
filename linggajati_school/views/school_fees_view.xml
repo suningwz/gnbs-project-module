@@ -125,5 +125,28 @@
             </field>
         </record>
 
+        <!-- student.fees.structure inherit form view -->
+        <record id="view_student_fees_structure_form_custom" model="ir.ui.view">
+            <field name="name">student.fees.structure.inherit.view.form</field>
+            <field name="model">student.fees.structure</field>
+            <field name="inherit_id" ref="school_fees.view_student_fees_structure_form"/>
+            <field name="arch" type="xml">
+                <!-- Custom -->
+                <xpath expr="//form/sheet/group" position="attributes">
+                    <attribute name="col" separator=" " add="" remove="">4</attribute>
+                </xpath>
+
+                <!-- Add Field -->
+                <field name="code" position="after">
+                    <field name="is_generate"/>
+                </field>
+                
+                <field name="code" position="after">
+                    <field name="is_registration"/>
+                </field>
+
+            </field>
+        </record>
+
     </data>
 </odoo>

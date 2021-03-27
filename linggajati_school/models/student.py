@@ -113,6 +113,8 @@ class Student(models.Model):
 
         # Define student.payslip.line
         std_fees_structure = self.env['student.fees.structure'].search([('id', '=', fees_structure_id)])
+        std_fees_structure_2 = self.env['student.fees.structure'].search([('is_registration', '=', True)])
+        std_fees_structure_2 = self.env['student.fees.structure'].search([('is_generate', '=', True)])
         lines = []
         for data in std_fees_structure.line_ids or []:
             line_vals = {'slip_id': self.id,
