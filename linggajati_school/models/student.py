@@ -128,5 +128,20 @@ class Student(models.Model):
 
         return invoice, record
 
-    def create_invoice(self):
-        self._create_invoice()
+    def generate_invoice(self):
+        self._generate_invoice()
+
+    # @api.multi
+    def _generate_invoice():
+        std_payslip = self.env['student.payslip'].search([('student_id', '=', self.id)])
+        payslip = {
+                    'name': std_payslip.name,
+                    'journal_id': std_payslip.journal_id,
+                    # 'state': std_payslip.name,
+                    'state': 'draft',
+                    'fees_structure_id': std_payslip.fees_structure_id,
+                    'student_id': std_payslip.student_id,
+                    # 'line_ids' : std_payslip.name,
+                  }
+        return payslip
+                
