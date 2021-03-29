@@ -1,7 +1,8 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
 import time
+from odoo.exceptions import ValidationError, Warning as UserError
 
 class Student(models.Model):
     _inherit = 'student.student'
@@ -103,7 +104,11 @@ class Student(models.Model):
         std_fees_structure = self.env['student.fees.structure'].search([('structure_for', '=', structure_for)])
         std_payslip = self.env['student.payslip']
         self.ensure_one()
-        
+
+        # Validation Fees Structure:
+        if not std_fees_structure:
+            raise ValidationError(_('Kindly, Select Fees Structure!'))
+
         # Define student.payslip
         payslip =   {
                         'student_id': self.id,
