@@ -79,5 +79,26 @@
             <field name="name">Fees Classes</field>
         </record>
 
+        <!-- Journal Accounting Default That Ter Overridiing -->
+        <menuitem
+            id="account.menu_action_account_journal_form"
+            name="Journal"
+            action="account.action_account_journal_form"
+            parent="account.account_account_menu"
+            groups="account.group_account_manager"
+            sequence="9"/>
+
+        <!-- Set sequence for menu fees structure -->
+        <record id="school_fees.menu_student_fees_structure_sub_form" model="ir.ui.menu">
+            <field name="sequence">3</field>
+        </record>
+        
+        <!-- Journal Menu on School Module -->
+        <menuitem
+            id="account.menu_action_account_journal_form"
+            name="Journal"
+            action="account.action_account_journal_form"
+            parent="school_fees.menu_student_fees_structure_form"
+            sequence="4"/>
     </data>
 </odoo>
