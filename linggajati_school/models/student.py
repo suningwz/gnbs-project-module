@@ -93,29 +93,31 @@ class Student(models.Model):
 
     # Method for create invoice on registration
     def create_invoice(self):
-        journal_id = 1
-        self._create_invoice(journal_id, date.today(), "registration")
+        # journal_id = 1
+        self._create_invoice(date.today(), "registration")
 
     # Overriding Invoice
     @api.multi
-    def _create_invoice(self, journal_id, date, structure_for):
+    def _create_invoice(self, date, structure_for):
         
         # Get database
         std_fees_structure = self.env['student.fees.structure'].search([('structure_for', '=', structure_for)])
         std_payslip = self.env['student.payslip']
-        # account_journal = self.env['account.journal']
+        account_journal = self.env['account.journal'].search([('is_school', '=', True)])
         self.ensure_one()
 
-        # Validation Fees Structure:
+        # Validation Fees Structure & Journal:
         if not std_fees_structure:
-            raise ValidationError(_('Kindly, Select Fees Structure!'))
+            raise ValidationError(_('Kindly, Select Fees Structure!  (Configutaions -> Fees -> Fees Structure)'))
+        if not account_journal:
+            raise ValidationError(_('Kindly, Select Account Journal! (Configutaions -> Fees -> Journal)'))
 
         # Define student.payslip
         payslip =   {
                         'student_id': self.id,
                         'name': std_fees_structure.name,
                         'fees_structure_id': std_fees_structure.id,
-                        'journal_id': journal_id,
+                        'journal_id': account_journal.id,
                         'date' : date,
                     }
 
@@ -157,11 +159,10 @@ class Student(models.Model):
     def _generate_invoice(self):
 
         # Define
-        journal_id = 1
+        # journal_id = 1
         interval = 1
-
         # Loop for generate
         while interval <= 12:
             date_payslip = date.today()+relativedelta(months=interval, day=1)
-            self._create_invoice(journal_id, date_payslip, "monthly")
+            self._create_invoice(date_payslip, "monthly")
             interval += 1
