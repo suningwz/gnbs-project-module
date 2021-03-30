@@ -108,7 +108,7 @@ class Student(models.Model):
 
         # Validation Fees Structure & Journal:
         if not std_fees_structure:
-            raise ValidationError(_('Kindly, Select Fees Structure!  (Configutaions -> Fees -> Fees Structure)'))
+            raise ValidationError(_('Kindly, Select Fees Structure! (Configutaions -> Fees -> Fees Structure)'))
         if not account_journal:
             raise ValidationError(_('Kindly, Select Account Journal! (Configutaions -> Fees -> Journal)'))
 
