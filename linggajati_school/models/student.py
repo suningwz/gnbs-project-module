@@ -103,6 +103,7 @@ class Student(models.Model):
         # Get database
         std_fees_structure = self.env['student.fees.structure'].search([('structure_for', '=', structure_for)])
         std_payslip = self.env['student.payslip']
+        # account_journal = self.env['account.journal']
         self.ensure_one()
 
         # Validation Fees Structure:

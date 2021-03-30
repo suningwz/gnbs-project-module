@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <!-- sccount.journal inherit form view -->
+        <record id="view_account_journal_form_custom" model="ir.ui.view">
+            <field name="name">account.journ.inherit.view.form</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                 <!-- Add Field -->
+                <field name="type" position="after">
+                    <field name="is_school"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- account.journal inherit tree view -->
+        <record id="view_account_journal_tree_custom" model="ir.ui.view">
+            <field name="name">account.journal.inherit.view.tree</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_tree"/>
+            <field name="arch" type="xml">
+                <!-- Add Field -->
+                <field name="type" position="after">
+                    <field name="is_school"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
