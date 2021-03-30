@@ -2,9 +2,11 @@
 <odoo>
   <data>
       <template id="home" name='home_page'>
+        <meta charset="utf-8"/>
         <t t-call='website.layout'>
+        
             <h2>Template</h2>
-            Hello Odoo!
+            <!-- Hello Odoo! -->
             <t t-esc="content"/>
         </t>
       </template>
