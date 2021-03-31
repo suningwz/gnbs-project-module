@@ -30,6 +30,8 @@
         'views/school_fees_view.xml',
         'views/school_view.xml',
         'views/account.xml',
+        # Front-End
+        'views/form_parent.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
