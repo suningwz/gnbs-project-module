@@ -8,7 +8,7 @@ class Hospital(http.Controller):
     @http.route('/hospital/doctor/', website=True, auth='user')
     def patient_page(self, **kw):
         # return "Hello World"
-        student = request.env['student.student'].search([])
+        student = request.env['student.student'].sudo().search([])
         # print("student---", student)
         return request.render('linggajati_membership.patient_page', {
             'student' : student
