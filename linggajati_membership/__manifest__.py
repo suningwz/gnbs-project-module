@@ -28,6 +28,7 @@
         # 'views/views.xml',
         # 'views/templates.xml',
         'views/home.xml',
+        'views/hospital.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -3,6 +3,7 @@ from odoo import http, _
 from odoo.http import request
 
 class Home(http.Controller):
+    
     @http.route('/member/home/', auth='user', website=True )
     def home(self, **kw):
         

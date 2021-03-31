@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        
+        <template id="patient_page" name="Patient Page">
+            
+            <t t-call="website.layout">
+                <div class="container">
+                    Hello World!
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Name
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="student" t-as="std">
+                                <tr>
+                                    <td>
+                                        <t t-esc="std.name"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+            </t>
+            
+        </template>
+
+    </data>
+</odoo>
