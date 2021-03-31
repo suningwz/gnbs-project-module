@@ -17,24 +17,16 @@
               <div class="col-md-4" t-foreach="product_ids" t-as="prod">
                 <t t-esc="prod.name"/>
                 <t t-esc="prod.list_price"/>
-                <!-- <img t-att-src="'data:image/jpg;base64,%s' % prod.image" style="max-height:150px" />
-                <img t-att-src="'/web/image/op.student/%s/image' % partner_id.id" alt="Student"/> -->
-                <!-- <img class="img img-responsive" style="display: inline-block;" 
-                    t-att-src="'data:image/jpg;base64,%s' % prod.image"/> -->
+                <img class="img img-responsive" style="display: inline-block; max-height:150px" 
+                    t-att-src="'data:image/jpg;base64,%s' % to_text(prod.image_medium)"/>
               </div>
             </div>
           </div>
-          <!-- <template id="transporter_image" inherit_id="website_sale.payment">
-            <xpath  expr="//div[@id='delivery_carrier']//input" position="after">
-                <img itemprop="image" class="img img-responsive" style="display: inline-block;" 
-                    t-att-src="'data:image/png;base64,' + delivery.partner_id.image"/>
-            </xpath>
-          </template>  -->
 
           <!-- Call Static Image -->
           <!-- <img src="/linggajati_membership/static/src/img.image.png" alt=""/> -->
           <!-- Call Dynamic Image -->
-          <!-- <img t-att-src="'data:image/jpeg;base64,%s' % order_line.product_id.image" style="max-height:50px" /> -->
+          <!-- <img class="img img-responsive" style="display: inline-block; max-height:150px" t-att-src="'data:image/jpg;base64,%s' % to_text(prod.image_medium)"/> -->
           
         </t>
       </template>
