@@ -32,6 +32,7 @@
         'views/account.xml',
         # Front-End
         'views/form_parent.xml',
+        'views/form_student.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
