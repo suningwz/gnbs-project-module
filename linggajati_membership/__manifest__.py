@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'website'],
+    'depends': ['base', 'website', 'mail'],
 
     # always loaded
     'data': [
@@ -29,6 +29,7 @@
         # 'views/templates.xml',
         'views/home.xml',
         'views/hospital.xml',
+        'views/partner.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
