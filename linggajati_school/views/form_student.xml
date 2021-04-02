@@ -30,10 +30,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name" class="control-label">Nama</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Student Name" required="0"/>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nama Lengkap" required="0"/>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="email">Your Email</label>
+                                        <label class="control-label" for="email">Email</label>
                                         <input type="email" class="form-control" name="email" id="email" required="0"/>
                                     </div>
                                     <div class="form-group">
@@ -51,16 +51,16 @@
                                             <option value="female">Perempuan</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="gender" class="control-label">Semua Kota</label>
+                                    <!-- <div class="form-group">
+                                        <label for="gender" class="control-label">Sekolah</label>
                                         <select name="cek_state" class="form-control" id="gender">
                                             <t t-foreach="country_state" t-as="states">
                                                 <option t-esc="states.name"/>
                                             </t>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
-                                        <label for="gender" class="control-label">Kota Indonesia</label>
+                                        <label for="gender" class="control-label">Provinsi</label>
                                         <select name="state" class="form-control" id="gender">
                                             <t t-foreach="state" t-as="states">
                                                 <option t-esc="states.name"/>

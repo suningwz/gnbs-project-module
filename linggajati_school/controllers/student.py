@@ -8,12 +8,9 @@ class Student(http.Controller):
     @http.route('/ppdb/registration', type="http", auth='public', website=True)
     def parent_webform(self, **kw):
         state = request.env['res.country.state'].search([('country_id','=',100)])
-        country_state = request.env['res.country.state'].search([])
-        print('state :', state)
+        # print('state :', state)
         return http.request.render('linggajati_school.registration', {
-            'gender' : ["Laki-Laki", "Perempuan"],
             'state' : state,
-            'country_state' : country_state
         })
 
     @http.route('/ppdb/registration/create', type='http', auth='public', website=True, csrf=False)
@@ -56,13 +53,6 @@ class Student(http.Controller):
         print("STUDENT")
         print("Student : ", student)
         print("Student : ", student['id'])
-
-        # Values
-        # vals = {
-        #     'partner' : partner,
-        #     'user' : user,
-        #     'student' : student
-        # }
 
         return request.render('linggajati_school.thanks_page', {})
     
