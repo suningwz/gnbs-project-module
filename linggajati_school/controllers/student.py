@@ -3,15 +3,14 @@ from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
-class Hospital(http.Controller):
+class Student(http.Controller):
 
     @http.route('/student_webform', type="http", auth='public', website=True)
     def parent_webform(self, **kw):
         return http.request.render('linggajati_school.create_student', {})
-        # return http.request.render('om_hospital.create_patient', {'patient_name' : 'Odoo Mates Test 123'})
 
-    @http.route('/create/student', type='http', auth='public', website=True)
-    def create_parent(self, **post):
+    @http.route('/create/student', type='http', auth='public', website=True, csrf=False)
+    def create_student(self, **post):
         
         # Create Partner
         partner = request.env['res.partner'].create({
@@ -26,7 +25,7 @@ class Hospital(http.Controller):
         admission_group = request.env['ir.model.data'].get_object('school', 'group_is_admission')
         emp_grp = request.env['ir.model.data'].get_object('base', 'group_user')
         group_list = [emp_grp.id, admission_group.id]
-        user = request.env['res.users'].sudo().create({
+        user = request.env['res.users'].create({
             'name': partner['name'],
             'login' : partner['email'],
             'password' : '123',
@@ -38,6 +37,23 @@ class Hospital(http.Controller):
         print("user_id : ", user['partner_id'])
 
         # Create Student
+        student = request.env['student.student'].create({
+            'user_id' : user['id'],
+            'name': partner['name'],
+            'email' : partner['email'],
+            'date_of_birth' : '1997-06-17',
+        })
+
+        print("STUDENT")
+        print("Student : ", student)
+        print("Student : ", student['id'])
+
+        # Values
+        vals = {
+            'partner' : partner,
+            # 'user' : user,
+            # 'student' : student
+        }
 
         return request.render('linggajati_school.thanks_page', vals)
     

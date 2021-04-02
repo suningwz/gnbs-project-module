@@ -56,7 +56,7 @@ class Parent(http.Controller):
         # print("user_id : ", user['partner_id'])
 
         # Create Parent
-        parent = request.env['school.parent'].sudo().create({
+        parent = request.env['school.parent'].create({
             'partner_id' : partner_id_parent,
         })
 
