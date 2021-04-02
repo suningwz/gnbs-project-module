@@ -16,15 +16,49 @@
                 <div class="oe_structure">
                     <div class="container">
                         <form action="/create/student" method="POST" role="form">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/> -->
                             <div class="form-group">
                                 <label for="name" class="control-label">Nama</label>
-                                <input type="text" class="form-control" t-att-value="name" name="name" id="name" placeholder="Student Name" required="1"/>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Student Name" required="0"/>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="email">Your Email</label>
-                                <input type="email" class="form-control" t-att-value="email" name="email" id="email" required="1"/>
+                                <input type="email" class="form-control" name="email" id="email" required="0"/>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label" name="date">Tanggal Lahir</label>
+                                <input type="date" class="form-control" name="date" t-att-value="date" />
+                            </div>
+                            <div class="form-group">
+                                <label for="gender" class="control-label">Jenis Kelamin</label>
+                                <select name="gender" class="form-control" id="gender">
+                                    <option value="male">Laki-laki</option>
+                                    <option value="female">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender" class="control-label">Semua Kota</label>
+                                <select name="cek_state" class="form-control" id="gender">
+                                    <t t-foreach="country_state" t-as="states">
+                                        <option t-esc="states.name"/>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender" class="control-label">Kota Indonesia</label>
+                                <select name="state" class="form-control" id="gender">
+                                    <t t-foreach="state" t-as="states">
+                                        <option t-esc="states.name"/>
+                                    </t>
+                                </select>
+                            </div>
+                            <!-- <div class="col-md-4" t-foreach="product_ids" t-as="prod">
+                                <t t-esc="prod.name"/>
+                                <t t-esc="prod.list_price"/>
+                                <img class="img img-responsive" style="display: inline-block; max-height:150px" 
+                                    t-att-src="'data:image/jpg;base64,%s' % to_text(prod.image_medium)"/>
+                            </div> -->
+
                             <div class="clearfix oe_login_buttons">
                                 <button class="btn btn-primary pull-left" type="submit">Submit</button>
                             </div>

@@ -7,15 +7,23 @@ class Student(http.Controller):
 
     @http.route('/student_webform', type="http", auth='public', website=True)
     def parent_webform(self, **kw):
-        return http.request.render('linggajati_school.create_student', {})
+        state = request.env['res.country.state'].search([('country_id','=',100)])
+        country_state = request.env['res.country.state'].search([])
+        print('state :', state)
+        return http.request.render('linggajati_school.create_student', {
+            'gender' : ["Laki-Laki", "Perempuan"],
+            'state' : state,
+            'country_state' : country_state
+        })
 
     @http.route('/create/student', type='http', auth='public', website=True, csrf=False)
     def create_student(self, **post):
-        
-        # Create Partner
+        print('POST :', post)
+
         partner = request.env['res.partner'].create({
                 'name': post.get('name'),
                 'email': post.get('email'),
+                
         })
         print('PARTNER')
         print("partner : ", partner)
@@ -41,7 +49,8 @@ class Student(http.Controller):
             'user_id' : user['id'],
             'name': partner['name'],
             'email' : partner['email'],
-            'date_of_birth' : '1997-06-17',
+            'gender' : post.get('gender'),
+            'date_of_birth' : post.get('date'),
         })
 
         print("STUDENT")
@@ -49,11 +58,11 @@ class Student(http.Controller):
         print("Student : ", student['id'])
 
         # Values
-        vals = {
-            'partner' : partner,
-            # 'user' : user,
-            # 'student' : student
-        }
+        # vals = {
+        #     'partner' : partner,
+        #     'user' : user,
+        #     'student' : student
+        # }
 
-        return request.render('linggajati_school.thanks_page', vals)
+        return request.render('linggajati_school.thanks_page', {})
     
