@@ -2,65 +2,77 @@
 <odoo>
 
     <!-- Untuk membuat tampilan menu di header website -->
-   <record id="menu_parent_form" model="website.menu">
+   <record id="menu_registration_form" model="website.menu">
        <field name="name">Registrasi</field>
-       <field name="url">student_webform</field>
+       <field name="url">ppdb/registration</field>
        <field name="parent_id" ref="website.main_menu"/>
        <field name="sequence">55</field>
    </record>
 
     <!-- Membuat Form pada website  -->
-    <template id="create_student" name="Registrasi">    
+    <template id="registration" name="Registrasi">    
         <t t-call="website.layout">
+            <!-- Jumbotron -->
+            <div class="jumbotron bg-primary p-4 mb-3">
+                <div class="container-fluid">
+                    <h2 class="text-center">FORMULIR PENDAFTARAN SISWA BARU</h2>
+                </div>
+            </div>
+            
+            <!-- Form -->
             <div id="wrap">
                 <div class="oe_structure">
                     <div class="container">
-                        <form action="/create/student" method="POST" role="form">
+                        <form action="/ppdb/registration/create" method="POST" role="form">
                             <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/> -->
-                            <div class="form-group">
-                                <label for="name" class="control-label">Nama</label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Student Name" required="0"/>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="email">Your Email</label>
-                                <input type="email" class="form-control" name="email" id="email" required="0"/>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" name="date">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="date" t-att-value="date" />
-                            </div>
-                            <div class="form-group">
-                                <label for="gender" class="control-label">Jenis Kelamin</label>
-                                <select name="gender" class="form-control" id="gender">
-                                    <option value="male">Laki-laki</option>
-                                    <option value="female">Perempuan</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="gender" class="control-label">Semua Kota</label>
-                                <select name="cek_state" class="form-control" id="gender">
-                                    <t t-foreach="country_state" t-as="states">
-                                        <option t-esc="states.name"/>
-                                    </t>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="gender" class="control-label">Kota Indonesia</label>
-                                <select name="state" class="form-control" id="gender">
-                                    <t t-foreach="state" t-as="states">
-                                        <option t-esc="states.name"/>
-                                    </t>
-                                </select>
-                            </div>
-                            <!-- <div class="col-md-4" t-foreach="product_ids" t-as="prod">
-                                <t t-esc="prod.name"/>
-                                <t t-esc="prod.list_price"/>
-                                <img class="img img-responsive" style="display: inline-block; max-height:150px" 
-                                    t-att-src="'data:image/jpg;base64,%s' % to_text(prod.image_medium)"/>
-                            </div> -->
+                            <div class="row">
+                                <!-- Left Column -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name" class="control-label">Nama</label>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Student Name" required="0"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="email">Your Email</label>
+                                        <input type="email" class="form-control" name="email" id="email" required="0"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" name="date">Tanggal Lahir</label>
+                                        <input type="date" class="form-control" name="date" t-att-value="date" />
+                                    </div>
+                                </div>
 
-                            <div class="clearfix oe_login_buttons">
-                                <button class="btn btn-primary pull-left" type="submit">Submit</button>
+                                <!-- Right Column -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="gender" class="control-label">Jenis Kelamin</label>
+                                        <select name="gender" class="form-control" id="gender">
+                                            <option value="male">Laki-laki</option>
+                                            <option value="female">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender" class="control-label">Semua Kota</label>
+                                        <select name="cek_state" class="form-control" id="gender">
+                                            <t t-foreach="country_state" t-as="states">
+                                                <option t-esc="states.name"/>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender" class="control-label">Kota Indonesia</label>
+                                        <select name="state" class="form-control" id="gender">
+                                            <t t-foreach="state" t-as="states">
+                                                <option t-esc="states.name"/>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Daftar -->
+                            <div class="clearfix oe_login_buttons mt-4">
+                                <button class="btn btn-primary btn-block" type="submit">Daftar</button>
                             </div>
                         </form>
                     </div>

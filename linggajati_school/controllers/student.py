@@ -5,18 +5,18 @@ from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 class Student(http.Controller):
 
-    @http.route('/student_webform', type="http", auth='public', website=True)
+    @http.route('/ppdb/registration', type="http", auth='public', website=True)
     def parent_webform(self, **kw):
         state = request.env['res.country.state'].search([('country_id','=',100)])
         country_state = request.env['res.country.state'].search([])
         print('state :', state)
-        return http.request.render('linggajati_school.create_student', {
+        return http.request.render('linggajati_school.registration', {
             'gender' : ["Laki-Laki", "Perempuan"],
             'state' : state,
             'country_state' : country_state
         })
 
-    @http.route('/create/student', type='http', auth='public', website=True, csrf=False)
+    @http.route('/ppdb/registration/create', type='http', auth='public', website=True, csrf=False)
     def create_student(self, **post):
         print('POST :', post)
 
