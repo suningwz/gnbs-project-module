@@ -9,63 +9,128 @@ class Parent(http.Controller):
     def parent_webform(self, **kw):
         return http.request.render('linggajati_school.create_parent', {})
 
-    @http.route('/create/parent', type='http', auth='public', website=True)
+    # Partner in Function
+    @http.route('/create/parent', type='http', auth='public', website=True, csrf=False)
     def create_parent(self, **post):
-        print("Date Receiverd.....", post)
-        # request.env['hospital.doctor'].sudo().create(doctol_val)
-        # emp_grp = request.env['base.group_user']
-        emp_grp = request.env['base'].search([])
-        parent_grp_id = http.request.env['school.group_school_parent']
-        parent_grp_id = request.env['school.group_school_parent'].sudo().search([])
-        parent_group_ids = [emp_grp.id, parent_grp_id.id]
 
-        school_parent = {'name': post.get('name'),
-                        'login': post.get('email'),
-                        'email': post.get('email'),
-                        # 'partner_id': parent_id.partner_id.id,
-                        'groups_id': [(6, 0, parent_group_ids)]
-                        }
+        def create_partner(post):
+            # Create Partner
+            partner = request.env['res.partner'].create({
+                'name': post.get('name'),
+                'email': post.get('email'),
+            })
 
-        request.env['res.users'].sudo().create(user_vals)
-        return request.render('linggajati_school.thanks_page', {})
+            return {
+                'name' : partner['name'],
+                'email' : partner['email'],
+                'partner_id' : partner['id'],
+                'partner' : partner
+            }
+        
+        partner = create_partner(post)
+        partner_id_last = request.env['res.partner']
+        print("partner_id_last : ", partner_id_last)
 
-        # def create(self, vals):
-        # parent_id = super(SchoolParent, self).create(vals)
-        # parent_grp_id = self.env.ref('school.group_school_parent')
-        # emp_grp = self.env.ref('base.group_user')
+
+        print('CREATE PARTNER')
+        print("partner : ", partner)
+        print("partner_id : ", partner['partner_id'])
+        partner_id_user = partner['partner_id']
+        partner_id_parent = partner['partner_id']
+        print("partner_id_user : ", partner_id_user)
+        print("partner_id_parent : ", partner_id_parent)
+
+        # Create user
+        # parent_grp_id = request.env['ir.model.data'].get_object('school', 'group_school_parent')
+        # emp_grp = request.env['ir.model.data'].get_object('base', 'group_user')
         # parent_group_ids = [emp_grp.id, parent_grp_id.id]
-        # if vals.get('parent_create_mng'):
-        #     return parent_id
-        # user_vals = {'name': parent_id.name,
-        #              'login': parent_id.email,
-        #              'email': parent_id.email,
-        #              'partner_id': parent_id.partner_id.id,
-        #              'groups_id': [(6, 0, parent_group_ids)]
-        #              }
-        # self.env['res.users'].create(user_vals)
-        # return parent_id
+        # user = request.env['res.users'].sudo().create({
+        #     'name': partner['name'],
+        #     'login' : partner['email'],
+        #     'email' : partner['email'],
+        #     'partner_id' : partner_id_user,
+        #     'groups_id': [(6, 0, parent_group_ids)]
+        # })
 
-class PartnerForm(http.Controller):
-    #mention class name
-    @http.route(['/customer/form'], type='http', auth="public", website=True)
-    #mention a url for redirection.
-    #define the type of controller which in this case is ‘http’.
-    #mention the authentication to be either public or user.
-    def partner_form(self, **post):
-    #create method
-    #this will load the form webpage
-        return request.render("create_partner_by_website.tmp_customer_form", {})
-    @http.route(['/customer/form/submit'], type='http', auth="public", website=True)
-    #next controller with url for submitting data from the form#
-    def customer_form_submit(self, **post):
-        partner = request.env['res.partner'].create({
-            'name': post.get('name'),
-            'email': post.get('email'),
-            'phone': post.get('phone')
+        # print('USER')
+        # print("user_id : ", user['partner_id'])
+
+        # Create Parent
+        parent = request.env['school.parent'].sudo().create({
+            'partner_id' : partner_id_parent,
         })
+
+        print("PARENT")
+        print("parent : ", parent)
+        print("partner_id : ", parent['partner_id'])
+
+        # Values
         vals = {
-            'partner': partner,
+            'partner' : partner,
+            # 'user' : user,
+            'parent' : parent
         }
-        #inherited the model to pass the values to the model from the form#
-        return request.render("create_partner_by_website.tmp_customer_form_success", vals)
-        #finally send a request to render the thank you page#
+
+        return request.render('linggajati_school.thanks_page', vals)
+
+    # @http.route('/create/parent', type='http', auth='public', website=True, csrf=False)
+    # def create_parent(self, **post):
+
+    #     # Create Partner
+    #     partner = request.env['res.partner'].create({
+    #         'name': post.get('name'),
+    #         'email': post.get('email'),
+    #     })
+
+    #     print('PARTNER')
+    #     print("partner_id : ", partner['id'])
+    #     partner_id_user = partner['id']
+    #     partner_id_parent = partner['id']
+    #     # print("partner_id_user : ", partner_id_user.__dict__)
+    #     # print("partner_id_parent : ", partner_id_parent.__dict__)
+        
+    #     # group = request.env['res.partner'].search(['id','=',partner['id'][0]])
+    #     # print('group :', group)
+
+    #     # Create Parent
+    #     parent = request.env['school.parent'].create({
+    #         # 'id' : 4,
+    #         # 'partner_id' : user['partner_id']
+    #         # 'partner_id' : partner_id,
+    #         # 'partner_id' : partner['id'],
+    #         'partner_id' : partner_id_parent,
+    #     })
+
+    #     print("PARENT")
+    #     print("partner_id : ", parent['partner_id'])
+    #     print("parent : ", parent)
+
+    #     def create_user(partner):
+    #         # # Create user
+    #         parent_grp_id = request.env['ir.model.data'].get_object('school', 'group_school_parent')
+    #         emp_grp = request.env['ir.model.data'].get_object('base', 'group_user')
+    #         parent_group_ids = [emp_grp.id, parent_grp_id.id]
+    #         user = request.env['res.users'].create({
+    #             'name': partner['name'],
+    #             'login' : partner['email'],
+    #             'email' : partner['email'],
+    #             'partner_id' : partner['id'],
+    #             # 'partner_id' : parent['parent_id'],
+    #             # 'partner_id' : partner_id_user,
+    #             # 'partner_id' : partner,
+    #             'groups_id': [(6, 0, parent_group_ids)]
+    #         })
+
+    #         print('USER')
+    #         print("user_id : ", user['partner_id'])
+
+    #         return user
+
+    #     # Values
+    #     vals = {
+    #         'partner' : partner,
+    #         'user' : create_user(partner),
+    #         'parent' : parent
+    #     }
+
+    #     return request.render('linggajati_school.thanks_page', vals)
