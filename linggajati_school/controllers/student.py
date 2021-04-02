@@ -7,6 +7,7 @@ class Student(http.Controller):
 
     @http.route('/ppdb/registration', type="http", auth='public', website=True)
     def parent_webform(self, **kw):
+        country = request.env['res.country'].search([])
         state = request.env['res.country.state'].search([('country_id','=',100)])
         school = request.env['school.school'].sudo().search([])
         # print('state :', state)

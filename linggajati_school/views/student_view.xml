@@ -208,6 +208,7 @@
                 </field>
                 <field name="state_id" position="attributes">
                     <attribute name="domain">[('country_id','=',country_id_custom)]</attribute>
+                    <attribute name="required">0</attribute>
                 </field>
                 <!-- Field Name : Add H1 tag on field name & Hide group-->
                 <field name="name" position="attributes">

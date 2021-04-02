@@ -9,11 +9,32 @@
        <field name="sequence">55</field>
    </record>
 
+    <data inherit_id="website.assets_frontend" name="mycss">
+        <xpath expr="." position="inside">
+            <style>
+                .pb32 {
+                    padding-bottom: 32px !important;
+                }
+
+                .pt32 {
+                    32px !important;
+                }
+            </style>
+        </xpath>
+    </data>
+
     <!-- Membuat Form pada website  -->
     <template id="registration" name="Registrasi">    
         <t t-call="website.layout">
+            <!-- Hide Footer -->
+            <!-- <div id="wrap">
+                <div class="oe_structure" id="oe_structure_website_event_index_4"></div>
+                <div class="container">
+                </div>
+            </div> -->
+
             <!-- Jumbotron -->
-            <div class="jumbotron bg-primary p-4 mb-3">
+            <div class="jumbotron bg-primary pt32 pb32">
                 <div class="container-fluid">
                     <h2 class="text-center">FORMULIR PENDAFTARAN SISWA BARU</h2>
                 </div>
@@ -21,8 +42,15 @@
             
             <!-- Form -->
             <div id="wrap">
-                <div class="oe_structure">
+                <div class="oe_structure" id="oe_structure_website_event_index_4">
                     <div class="container">
+                        <script>
+                            $(document).ready(function() {
+                                <!-- $('.o_affix_enabled').hide() -->
+                                <!-- $('.o_footer').hide() -->
+                                <!-- $('.o_main_navbar').hide() -->
+                            });
+                        </script>
                         <form action="/ppdb/registration/create" method="POST" role="form">
                             <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/> -->
                             <div class="row">
@@ -42,12 +70,15 @@
                                 <div class="col-md-6">
                                     <h4>DATA CALON SISWA</h4>
                                     <div class="form-group">
-                                        <label for="name" class="control-label">Nama</label>
+                                        <label for="name" class="control-label">Nama Lengkap (Sesuai Ijazah) <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Nama Lengkap" required="0"/>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label" for="email">Email</label>
-                                        <input type="email" class="form-control" name="email" id="email" required="0"/>
+                                        <label for="gender" class="control-label">Jenis Kelamin</label>
+                                        <select name="gender" class="form-control" id="gender">
+                                            <option value="male">Laki-laki</option>
+                                            <option value="female">Perempuan</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" name="date">Tanggal Lahir</label>
@@ -56,24 +87,24 @@
                                 </div>
 
                                 <!-- Right Column -->
-                                <div class="col-md-6 mt-2">
-                                    <!-- <h4 style="text-">DATA</h4> -->
-                                    <div class="form-group mt-4">
-                                        <label for="gender" class="control-label">Jenis Kelamin</label>
-                                        <select name="gender" class="form-control" id="gender">
-                                            <option value="male">Laki-laki</option>
-                                            <option value="female">Perempuan</option>
-                                        </select>
+                                <div class="col-md-6 mt-2 mt-4">
+                                    <div class="form-group">
+                                        <label class="control-label" for="email">Email</label>
+                                        <input type="email" class="form-control" name="email" id="email" required="0"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label" for="email">Nomor Telepon</label>
+                                        <input type="number" class="form-control" name="email" id="email" required="0"/>
                                     </div>
                                     
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="state" class="control-label">Provinsi</label>
                                         <select name="state" class="form-control" id="state">
                                             <t t-foreach="state" t-as="state">
                                                 <option t-esc="state.name"/>
                                             </t>
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
 
@@ -86,6 +117,12 @@
                 </div>
             </div>
         </t>
+    </template>
+
+    <template id="replace_footer" inherit_id="website.footer_custom" name="Footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+          <!-- Write here your custom code -->
+        </xpath>
     </template>
 
     
