@@ -26,8 +26,21 @@
                         <form action="/ppdb/registration/create" method="POST" role="form">
                             <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/> -->
                             <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="school" class="control-label">Jenis Formulir</label>
+                                        <select name="school" class="form-control" id="school">
+                                            <t t-foreach="school" t-as='school'>
+                                                <option t-esc="school.code"/>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <!-- Left Column -->
                                 <div class="col-md-6">
+                                    <h4>DATA CALON SISWA</h4>
                                     <div class="form-group">
                                         <label for="name" class="control-label">Nama</label>
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Nama Lengkap" required="0"/>
@@ -43,27 +56,21 @@
                                 </div>
 
                                 <!-- Right Column -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
+                                <div class="col-md-6 mt-2">
+                                    <!-- <h4 style="text-">DATA</h4> -->
+                                    <div class="form-group mt-4">
                                         <label for="gender" class="control-label">Jenis Kelamin</label>
                                         <select name="gender" class="form-control" id="gender">
                                             <option value="male">Laki-laki</option>
                                             <option value="female">Perempuan</option>
                                         </select>
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label for="gender" class="control-label">Sekolah</label>
-                                        <select name="cek_state" class="form-control" id="gender">
-                                            <t t-foreach="country_state" t-as="states">
-                                                <option t-esc="states.name"/>
-                                            </t>
-                                        </select>
-                                    </div> -->
+                                    
                                     <div class="form-group">
-                                        <label for="gender" class="control-label">Provinsi</label>
-                                        <select name="state" class="form-control" id="gender">
-                                            <t t-foreach="state" t-as="states">
-                                                <option t-esc="states.name"/>
+                                        <label for="state" class="control-label">Provinsi</label>
+                                        <select name="state" class="form-control" id="state">
+                                            <t t-foreach="state" t-as="state">
+                                                <option t-esc="state.name"/>
                                             </t>
                                         </select>
                                     </div>
