@@ -59,7 +59,7 @@
                                         <label for="school" class="control-label">Jenis Formulir</label>
                                         <select name="school" class="form-control" id="school">
                                             <t t-foreach="school" t-as='school'>
-                                                <option t-esc="school.code"/>
+                                                <option t-esc="school.code" t-att-value="school.id"/>
                                             </t>
                                         </select>
                                     </div>

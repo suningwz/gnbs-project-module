@@ -52,6 +52,7 @@ class Student(http.Controller):
             'gender' : post.get('gender'),
             'date_of_birth' : post.get('date'),
             'contact_phone' : post.get('number'),
+            'school_id' : post.get('school'),
         })
 
         print("STUDENT")
