@@ -9,7 +9,7 @@
        <field name="sequence">55</field>
    </record>
 
-    <data inherit_id="website.assets_frontend" name="mycss">
+    <!-- <data inherit_id="website.assets_frontend" name="mycss">
         <xpath expr="." position="inside">
             <style>
                 .pb32 {
@@ -21,7 +21,7 @@
                 }
             </style>
         </xpath>
-    </data>
+    </data> -->
 
     <!-- Membuat Form pada website  -->
     <template id="registration" name="Registrasi">    
@@ -121,7 +121,6 @@
 
     <template id="replace_footer" inherit_id="website.footer_custom" name="Footer">
         <xpath expr="//div[@id='footer']" position="replace">
-          <!-- Write here your custom code -->
         </xpath>
     </template>
 

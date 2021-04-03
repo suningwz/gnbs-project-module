@@ -33,6 +33,7 @@
         # Front-End
         # 'views/form_parent.xml',
         'views/form_student.xml',
+        'views/style_css.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
