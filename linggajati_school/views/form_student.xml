@@ -34,7 +34,7 @@
             </div> -->
 
             <!-- Jumbotron -->
-            <div class="jumbotron bg-primary pt32 pb32">
+            <div class="jumbotron bg-primary p-4 mb-3">
                 <div class="container-fluid">
                     <h2 class="text-center">FORMULIR PENDAFTARAN SISWA BARU</h2>
                 </div>
@@ -87,8 +87,8 @@
                                 </div>
 
                                 <!-- Right Column -->
-                                <div class="col-md-6 mt-2 mt-4">
-                                    <div class="form-group">
+                                <div class="col-md-6 mt-4">
+                                    <div class="form-group mt-2">
                                         <label class="control-label" for="email">Email</label>
                                         <input type="email" class="form-control" name="email" id="email" required="0"/>
                                     </div>
@@ -135,18 +135,16 @@
             <t name="Thanks" t-name="linggajati_school.thanks_page">
                 <t t-call="website.layout">
                     <div id="wrap">
-                        <div class="container">
-                            <h1>Thanks!</h1>
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="aler alert-success" role="status">
-                                        Your message has been sent sucessfully.
-                                    </div>
-                                    <p>
-                                        We willget back to you shortly
-                                    </p>
-                                </div>
-                            </div>
+                        <div class="jumbotron text-center">
+                            <h1 class="display-3">Terima Kasih!</h1>
+                            <p class="lead">Silahkan tunggu <strong>pengumuman</strong> untuk informasi lebih lanjut.</p>
+                            <hr/>
+                            <p>
+                                Ada Masalah? <a href="/">Kontak Kami</a>
+                            </p>
+                            <p class="lead">
+                                <a class="btn btn-primary btn-sm py-2" href="/" role="button">Back to Homea</a>
+                            </p>
                         </div>
                     </div>
                 </t>

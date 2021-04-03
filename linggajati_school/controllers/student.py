@@ -51,6 +51,7 @@ class Student(http.Controller):
             'email' : partner['email'],
             'gender' : post.get('gender'),
             'date_of_birth' : post.get('date'),
+            'contact_phone' : post.get('number'),
         })
 
         print("STUDENT")
