@@ -9,7 +9,7 @@ class Student(http.Controller):
     def parent_webform(self, **kw):
         country = request.env['res.country'].search([])
         state = request.env['res.country.state'].search([('country_id','=',100)])
-        school = request.env['school.school'].sudo().search([])
+        school = request.env['school.school'].sudo().search([('com_name','ilike','SM')])
         # print('state :', state)
         return http.request.render('linggajati_school.registration', {
             'state' : state,
