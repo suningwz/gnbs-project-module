@@ -141,7 +141,7 @@ class Student(models.Model):
         std_payslip.register_id.write({'total_amount': std_payslip.total})        
         # Fix state is confirm, for develop change to draft
         payslip_total = {'total': amount,
-                        #  'state': 'confirm',
+                         'state': 'confirm',
                          'due_amount': amount,
                          'currency_id': std_payslip.company_id.currency_id.id or False
                         }
