@@ -15,7 +15,7 @@
                     <div class="oe_structure">
                         <div class="container">
                             <div class="col-md-12">
-                                <form action="/customer/form/submit" method="POST" role="form">
+                                <form action="/customer/form/submit" method="POST" role="form" enctype="multipart/form-data">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <div class="form-group">
                                         <label for="patient_name" class="control-label">Nama</label>
@@ -30,7 +30,8 @@
                                             Upload Pas Foto
                                             <!-- <span class="text-danger"> *</span> -->
                                         </label>
-                                        <input 
+                                        <input type="file" name="photo" class="form-control" accept="image/*"/>
+                                        <!-- <input 
                                             type="file" 
                                             class="form-control" 
                                             name="photo" 
@@ -42,7 +43,7 @@
                                             data-show-caption="true" 
                                             data-show-preview="true"
                                             filename="filename"
-                                        />
+                                        /> -->
                                     </div>
                                     <div class="clearfix oe_login_buttons">
                                         <button class="btn btn-primary pull-left" type="submit">Submit</button>

@@ -1,5 +1,9 @@
-from odoo import http
+import odoo
+ 
+from odoo import http, models, fields, _
 from odoo.http import request
+import json
+import unicodedata
 import base64
 
 
@@ -21,6 +25,10 @@ class PartnerForm(http.Controller):
         photo = request.httprequest.files.getlist('photo')
         # photo = post.get('photo')
         print("photo :", photo)
+        if not photo:
+            data = 'KOSONG'
+        print("True Flase photo :", data)
+        error
         # print('filename :',photo.filename)
         # photo = base64.encodestring
 

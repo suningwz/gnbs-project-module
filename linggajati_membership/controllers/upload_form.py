@@ -24,7 +24,8 @@ class LatihanControllerTiga(http.Controller):
         order = request.env['sale.order'].sudo().search([('name','=', kwargs['so_id'])], limit=1)
     
         # mendapatkan daftar file yang diupload oleh user dengan input name so_file
-        files = request.httprequest.files.getlist('so_file')        
+        files = request.httprequest.files.getlist('so_file')    
+        print("files :", files)    
     
         # jika sale order tidak ada karena user memasukkan nomor dokumen yang salah tampilkan pesan
         if not order:
@@ -40,9 +41,12 @@ class LatihanControllerTiga(http.Controller):
         if order and files:
             for ufile in files:
                 filename = ufile.filename
+                print('filename :',)
                 if request.httprequest.user_agent.browser == 'safari':
                     filename = unicodedata.normalize('NFD', ufile.filename)
     
+
+                error
                 try:
                     attachment = request.env['ir.attachment'].sudo().create({
                         'name': filename,
