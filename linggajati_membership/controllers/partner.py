@@ -25,10 +25,13 @@ class PartnerForm(http.Controller):
         photo = request.httprequest.files.getlist('photo')
         # photo = post.get('photo')
         print("photo :", photo)
-        if not photo:
-            data = 'KOSONG'
-        print("True Flase photo :", data)
-        error
+        # if not photo:
+        #     data = 'KOSONG'
+        # print("True Flase photo :", data)
+        
+
+        # print('read :', photo[0].read())
+        # error
         # print('filename :',photo.filename)
         # photo = base64.encodestring
 
@@ -84,6 +87,7 @@ class PartnerForm(http.Controller):
         partner = request.env['res.partner'].create({
             'name': post.get('name'),
             'email': post.get('email'),
+            'image' : base64.b64encode(photo[0].read())
             # 'images': base64_string,
         })
         print('Partner')
@@ -91,24 +95,41 @@ class PartnerForm(http.Controller):
         print("name : ", partner['name'])
         print("id : ", partner['id'])
         print("user id : ", partner['user_id'])
+        # print("image :", partner['image'])
+        # error
         partner_id = partner['id']
 
         # print('partner', partner)
         # Attachments = request.env['ir.attachment'].search([{'res_name','=',partner['name']}])
         # Attachments = request.env['ir.attachment'].search([('res_id','=',partner_id)],limit=1)
-        attachments = request.env['ir.attachment'].search([('res_id','=',partner_id),('name','=','image'),('res_field','=','image')])
+        # attachments = request.env['ir.attachment'].search([('res_id','=',partner_id),('name','=','image'),('res_field','=','image')])
+        # attachments = request.env['ir.attachment'].search([('res_id','=',partner_id)])
+        attachments = request.env['ir.attachment'].search([])
         print('attachments :', attachments)
-        # photo = post.get('photo').filename
-        files = post.get('photo')
-        files_bytes = files.encode("ascii")
-        base64_bytes = base64.b64encode(files_bytes)
-        base64_string = base64_bytes.decode("ascii")
 
-        attachments.write({
-            'datas': base64_string,
-            'mimetype' : 'image/png',
-            'index_content' : 'image'
+        attachment_id = attachments.create({
+            'name': photo[0].filename,
+            'type': 'binary',
+            'datas': base64.b64encode(photo[0].read()),
+            'res_model': 'res.partner',
+    	    'res_id': partner_id
         })
+        print('attachment_id :', attachment_id)
+
+        # error
+        # photo = post.get('photo').filename
+        # files = post.get('photo')
+        # files_bytes = files.encode("ascii")
+        # base64_bytes = base64.b64encode(files_bytes)
+        # base64_string = base64_bytes.decode("ascii")
+
+        # attachments.write({
+
+        #     # 'datas': base64_string,
+        #     'datas': base64.encodestring(photo[0].read()),
+        #     # 'mimetype' : 'image/png',
+        #     # 'index_content' : 'image'
+        # })
 
         # encode = base64.encodestring(files)
         # attachment_id = Attachments.write({

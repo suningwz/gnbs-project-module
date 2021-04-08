@@ -41,12 +41,10 @@ class LatihanControllerTiga(http.Controller):
         if order and files:
             for ufile in files:
                 filename = ufile.filename
-                print('filename :',)
+                print('filename :', filename)
                 if request.httprequest.user_agent.browser == 'safari':
                     filename = unicodedata.normalize('NFD', ufile.filename)
-    
-
-                error
+                    print('filename :', filename)
                 try:
                     attachment = request.env['ir.attachment'].sudo().create({
                         'name': filename,
@@ -55,7 +53,11 @@ class LatihanControllerTiga(http.Controller):
                         'res_model': 'sale.order',
                         'res_id': order.id
                     })
+                    print('datas -----------------', attachment['name'])
+                    print('ufile.read -----------------', ufile.read())
+                    print('ufile -----------------', ufile)
                 except Exception:
                     data['message'] = 'Sorry something bad happen. Please try again !!!'
+                error
     
         return request.render('linggajati_membership.upload_message', data)
