@@ -11,6 +11,7 @@
         <!-- Membuat Form pada website  -->
         <template id="tmp_customer_form" name="Partner Form">    
             <t t-call="website.layout">
+                <script type="text/javascript" src="/module_name/static/src/js/validation.js"/>
                 <div id="wrap">
                     <div class="oe_structure">
                         <div class="container">
