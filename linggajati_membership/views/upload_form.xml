@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <data>
+    
+
+        <template id="upload_form" name="Upload File Form">
+            <!-- panggil view website.layout agar navbar dll tampil -->
+            <t t-call="website.layout">
+                <!-- tambah judul halaman -->
+                <t t-set="additional_title" t-value="'Upload Sale Payment'" />
+                <div id="wrap">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="sale-title">Upload Sale Payment</h2>    
+                                <form action="/process/upload" method="post" enctype="multipart/form-data">
+                                    <!-- 
+                                        set csrf token, agar lebih secure,
+                                        jika tidak diset, pastikan pada controller paremeter csrf diset False
+                                    -->
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Your Sale Order Number</label>
+                                                <input type="text" name="so_id" class="form-control" />
+                                            </div>
+                                        </div>                                    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Your Payment Document</label>
+                                                <input type="file" name="so_file" class="form-control" accept="image/*"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-success">Upload</button>
+                                        </div>
+                                    </div>
+                                </form>                        
+                            </div>           
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="upload_message" name="Upload Form Message">
+            <!-- panggil view website.layout agar navbar dll tampil -->
+            <t t-call="website.layout">
+                <!-- tambah judul halaman -->
+                <t t-set="additional_title" t-value="'Upload Message'" />
+                <div id="wrap">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1>
+                                    <span t-esc="message" />
+                                </h1>
+                                <a href="/upload" class="btn btn-primary">Back</a> 
+                            </div>           
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+
+</odoo>

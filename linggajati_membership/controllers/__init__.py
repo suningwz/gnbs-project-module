@@ -4,3 +4,4 @@ from . import controllers
 from . import home
 from . import hospital
 from . import partner
+from . import upload_form

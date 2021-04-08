@@ -30,6 +30,7 @@
         'views/home.xml',
         'views/hospital.xml',
         'views/partner.xml',
+        'views/upload_form.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
