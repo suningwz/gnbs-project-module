@@ -1,15 +1,33 @@
-# -*- coding: utf-8 -*-
+from odoo import api, fields, models
 
-from odoo import models, fields, api
 
-# class linggajati_membership(models.Model):
-#     _name = 'linggajati_membership.linggajati_membership'
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+    @api.model
+    def get_all_data(self):
+        # result = {}
+        result = []
+        res_partner = self.env['res.partner'].search([])
+        # print('rest partner :', res_partner)
+        # print('email :', res_partner['id'])
+        
+        # Dictionary
+        # i = -1
+        # for data in res_partner:
+        #     i += 1
+        #     result['email'].appenddata.email
+        #     result['id'] = data.id
+        #     print('result ',i,' : ',result['email'])
+        #     print('result ',i,' : ',result['id'])
+
+        # print(result)
+        i = -1
+        for data in res_partner:
+            i += 1
+            result.append(data.email)
+            print('email ',i,' : ',result[i])
+
+        print('result :',result)
+
+        return(result)

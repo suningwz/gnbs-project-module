@@ -7,16 +7,38 @@
             <field name="parent_id" ref="website.main_menu"></field>
             <field name="sequence" type="int">22</field>
         </record>
+        
+        <template id="assets_frontend" inherit_id="website.assets_frontend">
+            <xpath expr="script[last()]" position="after">
+                <script type="text/javascript" src="/linggajati_membership/static/src/js/jquery.js"></script>
+            </xpath>
+        </template>
 
         <!-- Membuat Form pada website  -->
         <template id="tmp_customer_form" name="Partner Form">    
             <t t-call="website.layout">
-                <script type="text/javascript" src="/module_name/static/src/js/validation.js"/>
+                <!-- <script type="text/javascript" src="/linggajati_membership/static/src/js/jquery.js"/> -->
+                <!-- <script>
+                    odoo.define('linggajati_membership.validation', function (require) {
+                        "use strict";
+
+                        var rpc = require('web.rpc');
+                        console.log('Hello World')
+                        console.log(rpc)
+
+                        rpc.query({
+                            model: 'res.partner',
+                        }).then(function (result){
+                            console.log(result)
+                        })
+                    });
+                </script> -->
+                <!-- <script type="text/javascript" src="/linggajati_membership/static/src/js/validation.js"/> -->
                 <div id="wrap">
                     <div class="oe_structure">
                         <div class="container">
                             <div class="col-md-12">
-                                <form action="/customer/form/submit" method="POST" role="form" enctype="multipart/form-data">
+                                <form action="/customer/form/submit" name='partner_form'method="POST" role="form" enctype="multipart/form-data" onsubmit="return validateForm()">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <div class="form-group">
                                         <label for="patient_name" class="control-label">Nama</label>
@@ -33,22 +55,8 @@
                                     <div class="form-group">
                                         <label for="photo" class="form-label">
                                             Upload Pas Foto
-                                            <!-- <span class="text-danger"> *</span> -->
                                         </label>
                                         <input type="file" name="photo" class="form-control" accept="image/*"/>
-                                        <!-- <input 
-                                            type="file" 
-                                            class="form-control" 
-                                            name="photo" 
-                                            id="photo" 
-                                            accept="image/*,application/pdf,video/*" 
-                                            multiple="true" 
-                                            required="0"
-                                            data-show-upload="true" 
-                                            data-show-caption="true" 
-                                            data-show-preview="true"
-                                            filename="filename"
-                                        /> -->
                                     </div>
                                     <div class="clearfix oe_login_buttons">
                                         <button class="btn btn-primary pull-left" type="submit">Submit</button>

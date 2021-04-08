@@ -22,9 +22,9 @@ class Student(http.Controller):
         print('POST :', post)
 
         # Email
-        partner = request.env['res.partner'].search([()])
-        if partner['email']:
-            
+        # partner = request.env['res.partner'].search([()])
+        # if partner['email']:
+
 
         # Photo
         photo = request.httprequest.files.getlist('photo')
