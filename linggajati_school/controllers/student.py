@@ -1,6 +1,7 @@
 from odoo import http
 from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
+import unicodedata
 
 
 class Student(http.Controller):
@@ -44,6 +45,11 @@ class Student(http.Controller):
         print('USER')
         print("user_id : ", user['partner_id'])
 
+        # Photo
+        photo = post.get('photo')
+        article_1 = unicodedata.normalize('NFKD', photo).encode('ascii', 'ignore')
+        article_2 = article_1.lstrip('data:image/png;base64,')
+
         # Create Student
         student = request.env['student.student'].create({
             'user_id' : user['id'],
@@ -53,6 +59,7 @@ class Student(http.Controller):
             'date_of_birth' : post.get('date'),
             'contact_phone' : post.get('number'),
             'school_id' : post.get('school'),
+            'photo' : photo,
         })
 
         print("STUDENT")

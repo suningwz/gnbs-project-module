@@ -307,7 +307,20 @@
                                             Upload Pas Foto Calon Siswa
                                             <!-- <span class="text-danger"> *</span> -->
                                         </label>
-                                        <input type="file" class="form-control" name="" id="" required="0"/>
+                                        <!-- <input type="file" class="form-control" name="" id="" required="0"/> -->
+                                        <input 
+                                            type="file" 
+                                            class="form-control" 
+                                            name="photo" 
+                                            id="photo" 
+                                            accept="image/*,application/pdf,video/*" 
+                                            multiple="0" 
+                                            required="0"
+                                            data-show-upload="true" 
+                                            data-show-caption="true" 
+                                            data-show-preview="true"
+                                            filename="filename"
+                                        />
                                     </div>
                                     <div class="clearfix oe_login_buttons mt-3">
                                         <button class="btn btn-primary btn-block" type="submit">Daftar</button>
