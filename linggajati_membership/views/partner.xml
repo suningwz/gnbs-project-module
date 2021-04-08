@@ -26,6 +26,10 @@
                                         <input type="email" class="form-control" t-att-value="email"  name="email" id="email" required="0"/>
                                     </div>
                                     <div class="form-group">
+                                        <label class="control-label" for="note">Note</label>
+                                        <input type="text" class="form-control" t-att-value="note"  name="note" id="note"/>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="photo" class="form-label">
                                             Upload Pas Foto
                                             <!-- <span class="text-danger"> *</span> -->

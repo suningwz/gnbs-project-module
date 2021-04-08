@@ -60,7 +60,7 @@
             <div id="wrap">
                 <div class="oe_structure" id="oe_structure_website_event_index_4">
                     <div class="container">
-                        <form action="/ppdb/registration/create" method="POST" role="form">
+                        <form action="/ppdb/registration/create" method="POST" role="form" enctype="multipart/form-data">
                             <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/> -->
                             <div class="row">
                                 <div class="col-md-6">
@@ -95,13 +95,13 @@
                                             <option value="female">Perempuan</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="control-label" for="">
                                             Tempat Lahir
                                             <span class="text-danger"> *</span>
                                         </label>
                                         <input type="text" class="form-control" name="" id="" required="0"/>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label class="control-label" for="date">
                                             Tanggal Lahir
@@ -109,7 +109,7 @@
                                         </label>
                                         <input type="date" class="form-control" name="date" id="date" required="0"/>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="control-label" for="">
                                             Nomor Induk Kependudukan (NIK)
                                             <span class="text-danger"> *</span>
@@ -143,7 +143,7 @@
                                             <span class="text-danger"> *</span>
                                         </label>
                                         <input type="text" class="form-control" name="" id="" required="0"/>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label class="control-label" for="email">
                                             Email
@@ -152,7 +152,7 @@
                                         <span class="text-danger"> *</span>
                                         <input type="email" class="form-control" name="email" id="email" required="0"/>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="control-label" for="phone">
                                             Nomor Telepon
                                             <span class="text-danger"> *</span>
@@ -190,7 +190,7 @@
                                             <option value="">Tidak Lancar</option>
                                             <option value="">Tidak Bisa</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <!-- Right Column -->
@@ -203,9 +203,9 @@
                                             </t>
                                         </select>
                                     </div> -->
-                                    <!-- Ayah -->
                                     <h4>2. DATA ORANG TUA/WALI CALON SISWA</h4>
-                                    <div class="form-group">
+                                    <!-- Ayah -->
+                                    <!-- <div class="form-group">
                                         <label for="name" class="control-label">
                                             Nama Ayah
                                             <span class="text-danger"> *</span>
@@ -215,7 +215,7 @@
                                     <div class="form-group">
                                         <label for="" class="control-label">
                                             Pendidikan Terakhir Ayah
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
                                         <select name="" class="form-control" id="">
                                             <option value="">Tidak Sekolah</option>
@@ -230,14 +230,14 @@
                                     <div class="form-group">
                                         <label class="control-label" for="">
                                             Pekerjaan Ayah
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
                                         <input type="text" class="form-control" name="" id="" required="0"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="" class="control-label">
                                             Penghasilan per Bulan Ayah
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
                                         <select name="" class="form-control" id="">
                                             <option value="">Rp. 500.000,- s.d. Rp. 2.000.000,-</option>
@@ -248,13 +248,13 @@
                                     <div class="form-group">
                                         <label class="control-label" for="phone">
                                             No Hp Ayah
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
                                         <input type="number" class="form-control" name="phone" id="phone" required="0"/>
-                                    </div>
+                                    </div> -->
 
                                     <!-- Ibu -->
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="name" class="control-label">
                                             Nama Ibu
                                             <span class="text-danger"> *</span>
@@ -264,7 +264,7 @@
                                     <div class="form-group">
                                         <label for="" class="control-label">
                                             Pendidikan Terakhir Ibu
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
                                         <select name="" class="form-control" id="">
                                             <option value="">Tidak Sekolah</option>
@@ -279,14 +279,14 @@
                                     <div class="form-group">
                                         <label class="control-label" for="">
                                             Pekerjaan Ibu
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
                                         <input type="text" class="form-control" name="" id="" required="0"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="" class="control-label">
                                             Penghasilan per Bulan Ibu
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
                                         <select name="" class="form-control" id="">
                                             <option value="">Rp. 500.000,- s.d. Rp. 2.000.000,-</option>
@@ -297,17 +297,16 @@
                                     <div class="form-group">
                                         <label class="control-label" for="phone">
                                             No Hp Ibu
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
                                         <input type="number" class="form-control" name="phone" id="phone" required="0"/>
-                                    </div>
+                                    </div> -->
                                     <h4>FOTO CALON SANTRI</h4>
                                     <div class="form-group">
                                         <label for="" class="form-label">
                                             Upload Pas Foto Calon Siswa
-                                            <!-- <span class="text-danger"> *</span> -->
+                                            <span class="text-danger"> *</span>
                                         </label>
-                                        <!-- <input type="file" class="form-control" name="" id="" required="0"/> -->
                                         <input 
                                             type="file" 
                                             class="form-control" 
@@ -319,7 +318,6 @@
                                             data-show-upload="true" 
                                             data-show-caption="true" 
                                             data-show-preview="true"
-                                            filename="filename"
                                         />
                                     </div>
                                     <div class="clearfix oe_login_buttons mt-3">
