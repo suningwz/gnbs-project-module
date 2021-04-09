@@ -10,7 +10,7 @@ import base64
 class PartnerForm(http.Controller):
     @http.route('/customer/form', type='http', auth='public', website=True)
     def partner_form(self, **kw):
-        return request.render('linggajati_membership.tmp_customer_form', {})
+        return request.render('linggajati_membership.tmp_customer_form', {'value_form' : 'AA'})
 
     @http.route('/customer/form/submit', type='http', auth='public', website=True, csrf=False)
     def customer_form_submit(self, **post):
@@ -64,13 +64,15 @@ class PartnerForm(http.Controller):
         print("partner id : ", user['partner_id'])
         
         # Experiment Group
-        parent_grp_id = request.env['ir.model.data'].get_object('school', 'group_school_parent')
-        emp_grp = request.env['ir.model.data'].get_object('base', 'group_user')
-        parent_group_ids = [emp_grp.id, parent_grp_id.id]
+        # parent_grp_id = request.env['ir.model.data'].get_object('school', 'group_school_parent')
+        # emp_grp = request.env['ir.model.data'].get_object('base', 'group_user')
+        # parent_group_ids = [emp_grp.id, parent_grp_id.id]
 
-        print("parent_grp_id : ", parent_grp_id)
-        print("emp_grp : ", emp_grp)
-        print("parent_group_ids : ", parent_group_ids)
+        # print("parent_grp_id : ", parent_grp_id)
+        # print("emp_grp : ", emp_grp)
+        # print("parent_group_ids : ", parent_group_ids)
+
+        error
 
         return request.render('linggajati_membership.tmp_customer_form_success', {})
         # return request.render('linggajati_membership.tmp_customer_form_success', data)

@@ -22,12 +22,12 @@ class ResPartner(models.Model):
         #     print('result ',i,' : ',result['id'])
 
         # print(result)
-        i = -1
+        # i = -1
         for data in res_partner:
-            i += 1
+            # i += 1
             result.append(data.email)
-            print('email ',i,' : ',result[i])
+            # print('email ',i,' : ',result[i])
 
-        print('result :',result)
+        # print('result :',result)
 
         return(result)
