@@ -10,7 +10,8 @@
         
         <template id="assets_frontend" inherit_id="website.assets_frontend">
             <xpath expr="script[last()]" position="after">
-                <script type="text/javascript" src="/linggajati_membership/static/src/js/model_validation.js"></script>
+                <!-- <script type="text/javascript" src="/linggajati_membership/static/src/js/model_validation.js"></script> -->
+                <script type="text/javascript" src="/linggajati_membership/static/src/js/date_validation.js"></script>
             </xpath>
         </template>
 
@@ -36,6 +37,31 @@
                                         <input type="text" class="form-control" t-att-value="note"  name="note" id="note"/>
                                     </div>
                                     <div class="form-group">
+                                        <label class="control-label" for="date">
+                                            Tanggal Lahir
+                                            <span class="text-danger"> *</span>
+                                        </label>
+                                        <!-- <input type="text" class="form-control datepicker" name="date" id="date"/> -->
+                                        <input data-date-format="DD/MMM/YYYY" placeholder="dd/mm/yyyy" type="date" class="form-control datepicker" name="date" id="date"/>
+                                    </div>
+                                    <div class="input-append date">
+                                        <label class="control-label" for="date">
+                                            Tanggal Lahir Datepicker
+                                            <span class="text-danger"> *</span>
+                                        </label>
+                                        <input class="form-control datepicker" data-date-format="DD/MM/YYYY" type="text" placeholder="bln/tgl/thn" value=""/>
+                                        <!-- <span class="add-on"><i class="icon-th"></i></span> -->
+                                    </div>
+
+                                    <h4>Experiment Date Format</h4>
+                                    <div class="input-append date" id="dp3" >
+                                        <input type="text" id="datepicker" /> <span class="add-on">Date</span>
+                                    </div>
+                                    <select>
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select>
+                                    <div class="form-group">
                                         <label for="photo" class="form-label">
                                             Upload Pas Foto
                                         </label>
@@ -47,7 +73,7 @@
 
                                 </form>
                                     <div class="clearfix oe_login_buttons">
-                                        <button id='' onClick="buttonClick()" class="btn btn-primary pull-left">Click Me</button>
+                                        <button id='button_click' onClick="buttonClick()" class="btn btn-primary pull-left button_click">Click Me</button>
                                     </div>
                             </div>
                         </div>

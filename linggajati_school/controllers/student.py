@@ -21,11 +21,6 @@ class Student(http.Controller):
     def create_student(self, **post):
         print('POST :', post)
 
-        # Email
-        # partner = request.env['res.partner'].search([()])
-        # if partner['email']:
-
-
         # Photo
         photo = request.httprequest.files.getlist('photo')
         photo = base64.b64encode(photo[0].read())
