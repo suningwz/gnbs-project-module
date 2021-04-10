@@ -10,7 +10,7 @@
         
         <template id="assets_frontend" inherit_id="website.assets_frontend">
             <xpath expr="script[last()]" position="after">
-                <script type="text/javascript" src="/linggajati_membership/static/src/js/validation.js"></script>
+                <script type="text/javascript" src="/linggajati_membership/static/src/js/model_validation.js"></script>
             </xpath>
         </template>
 
@@ -24,7 +24,7 @@
                                 <form action="/customer/form/submit" name='partner_form' id='form' method="POST" role="form" enctype="multipart/form-data" onsubmit="return validateForm()">
                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                     <div class="form-group">
-                                        <label for="patient_name" class="control-label">Nama</label>
+                                        <label for="name" class="control-label">Nama</label>
                                         <input type="text" class="form-control" t-att-value="value_form" name="name" id="name" required="0"/>
                                     </div>
                                     <div class="form-group">
@@ -44,7 +44,11 @@
                                     <div class="clearfix oe_login_buttons">
                                         <button id='submit' class="btn btn-primary pull-left" type="submit">Submit</button>
                                     </div>
+
                                 </form>
+                                    <div class="clearfix oe_login_buttons">
+                                        <button id='' onClick="buttonClick()" class="btn btn-primary pull-left">Click Me</button>
+                                    </div>
                             </div>
                         </div>
                     </div>
