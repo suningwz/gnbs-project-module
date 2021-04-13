@@ -10,8 +10,8 @@
         
         <template id="assets_frontend" inherit_id="website.assets_frontend">
             <xpath expr="script[last()]" position="after">
-                <!-- <script type="text/javascript" src="/linggajati_membership/static/src/js/model_validation.js"></script> -->
-                <script type="text/javascript" src="/linggajati_membership/static/src/js/date_validation.js"></script>
+                <script type="text/javascript" src="/linggajati_membership/static/src/js/model_validation.js"></script>
+                <!-- <script type="text/javascript" src="/linggajati_membership/static/src/js/date_validation.js"></script> -->
             </xpath>
         </template>
 
@@ -49,18 +49,25 @@
                                             Tanggal Lahir Datepicker
                                             <span class="text-danger"> *</span>
                                         </label>
-                                        <input class="form-control datepicker" data-date-format="DD/MM/YYYY" type="text" placeholder="bln/tgl/thn" value=""/>
+                                        <input 
+                                            class="form-control datepicker" 
+                                            id="datepicker" 
+                                            data-date-format="DD/MM/YYYY" 
+                                            type="text" 
+                                            placeholder="bln/tgl/thn"
+                                            value=""/>
+                                         <!-- <span class="error" id="lblError"></span><br/><br/> -->
                                         <!-- <span class="add-on"><i class="icon-th"></i></span> -->
                                     </div>
 
-                                    <h4>Experiment Date Format</h4>
+                                    <!-- <h4>Experiment Date Format</h4>
                                     <div class="input-append date" id="dp3" >
                                         <input type="text" id="datepicker" /> <span class="add-on">Date</span>
                                     </div>
                                     <select>
                                         <option>1</option>
                                         <option>2</option>
-                                    </select>
+                                    </select> -->
                                     <div class="form-group">
                                         <label for="photo" class="form-label">
                                             Upload Pas Foto
