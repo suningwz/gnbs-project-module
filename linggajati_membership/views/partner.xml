@@ -79,9 +79,9 @@
                                     </div>
 
                                 </form>
-                                    <div class="clearfix oe_login_buttons">
+                                    <!-- <div class="clearfix oe_login_buttons">
                                         <button id='button_click' onClick="buttonClick()" class="btn btn-primary pull-left button_click">Click Me</button>
-                                    </div>
+                                    </div> -->
                             </div>
                         </div>
                     </div>
