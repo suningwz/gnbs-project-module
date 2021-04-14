@@ -71,53 +71,11 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="">
-                                                Tempat Lahir
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="text" class="form-control" name="city" id="city" required="0"/>
-                                        </div>
-                                        <div class="form-group">
                                             <label class="control-label" for="date">
                                                 Tanggal Lahir
                                                 <span class="text-danger"> *</span>
                                             </label>
                                             <input type="text" class="form-control datepicker" name="date" id="datepicker" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="">
-                                                Nomor Induk Kependudukan (NIK)
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="number" class="form-control" name="nik" id="nik" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="">
-                                                Nomor Induk Siswa Nasional (NISN)
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="number" class="form-control" name="nisn" id="nisn" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="">
-                                                Nomor Peserta Ujian (UASBN / UN)
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="number" class="form-control" name="un" id="un" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="">
-                                                Alamat Rumah
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="text" class="form-control" name="address" id="address" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="">
-                                                Sekolah Asal
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="text" class="form-control" name="prev_school" id="prev_school" required="0"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="email">
@@ -127,56 +85,13 @@
                                             <input type="email" class="form-control" name="email" id="email" required="0"/>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="phone">
-                                                Nomor Telepon
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="number" class="form-control" name="phone" id="phone" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="" class="control-label">
-                                                Kemampuan Baca al-Qur'an
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <select name="quran" class="form-control" id="quran">
-                                                <option value="">Lancar</option>
-                                                <option value="">Tidak Lancar</option>
-                                                <option value="">Tidak Bisa</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="" class="control-label">
-                                                Hafalan Juz Amma
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <select name="juz_amma" class="form-control" id="juz_amma">
-                                                <option value="">Hafal</option>
-                                                <option value="">Tidak Hafal</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="" class="control-label">
-                                                Kemampuan Komputer
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <select name="computer" class="form-control" id="computer">
-                                                <option value="">Lancar</option>
-                                                <option value="">Tidak Lancar</option>
-                                                <option value="">Tidak Bisa</option>
-                                            </select>
+                                            <label for="password">Password</label>
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
                                         </div>
                                     </div>
 
                                     <!-- Right Column -->
                                     <div class="col-md-6">
-                                        <!-- <div class="form-group">
-                                            <label for="state" class="control-label">Provinsi</label>
-                                            <select name="state" class="form-control" id="state">
-                                                <t t-foreach="state" t-as="state">
-                                                    <option t-esc="state.name"/>
-                                                </t>
-                                            </select>
-                                        </div> -->
                                         <h4>2. DATA ORANG TUA/WALI CALON SISWA</h4>
                                         <!-- Ayah -->
                                         <div class="form-group">
@@ -187,112 +102,11 @@
                                             <input type="text" class="form-control" name="father_name" id="father_name" required="0"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="" class="control-label">
-                                                Pendidikan Terakhir Ayah
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <select name="" class="form-control" id="father_school">
-                                                <option value="">Tidak Sekolah</option>
-                                                <option value="">SD / Sederajat</option>
-                                                <option value="">SMP / Sederajat</option>
-                                                <option value="">SMA / Sederajat</option>
-                                                <option value="">Strata 1</option>
-                                                <option value="">Strata 2</option>
-                                                <option value="">Strata 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="">
-                                                Pekerjaan Ayah
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="text" class="form-control" name="father_work" id="father_work" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="" class="control-label">
-                                                Penghasilan per Bulan Ayah
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <select name="" class="form-control" id="father_earn">
-                                                <option value="">Rp. 500.000,- s.d. Rp. 2.000.000,-</option>
-                                                <option value="">Rp. 2.000.000,- s.d. Rp. 4.000.000,-</option>
-                                                <option value="">> Rp. 4.000.000,-</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
                                             <label class="control-label" for="phone">
                                                 No Hp Ayah
                                                 <span class="text-danger"> *</span>
                                             </label>
                                             <input type="number" class="form-control" name="father_phone" id="father_phone" required="0"/>
-                                        </div>
-
-                                        <!-- Ibu -->
-                                        <div class="form-group">
-                                            <label for="name" class="control-label">
-                                                Nama Ibu
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="text" class="form-control" name="mother_name" id="mother_name" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="" class="control-label">
-                                                Pendidikan Terakhir Ibu
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <select name="" class="form-control" id="mother_school">
-                                                <option value="">Tidak Sekolah</option>
-                                                <option value="">SD / Sederajat</option>
-                                                <option value="">SMP / Sederajat</option>
-                                                <option value="">SMA / Sederajat</option>
-                                                <option value="">Strata 1</option>
-                                                <option value="">Strata 2</option>
-                                                <option value="">Strata 3</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="">
-                                                Pekerjaan Ibu
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="text" class="form-control" name="mother_work" id="mother_work" required="0"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="" class="control-label">
-                                                Penghasilan per Bulan Ibu
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <select name="" class="form-control" id="mother_earn">
-                                                <option value="">Rp. 500.000,- s.d. Rp. 2.000.000,-</option>
-                                                <option value="">Rp. 2.000.000,- s.d. Rp. 4.000.000,-</option>
-                                                <option value="">> Rp. 4.000.000,-</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="phone">
-                                                No Hp Ibu
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input type="number" class="form-control" name="mother_phone" id="mother_phone" required="0"/>
-                                        </div>
-                                        <h4>FOTO CALON SANTRI</h4>
-                                        <div class="form-group">
-                                            <label for="" class="form-label">
-                                                Upload Pas Foto Calon Siswa
-                                                <span class="text-danger"> *</span>
-                                            </label>
-                                            <input 
-                                                type="file" 
-                                                class="form-control" 
-                                                name="photo" 
-                                                id="photo" 
-                                                accept="image/*,application/pdf,video/*" 
-                                                multiple="0" 
-                                                required="0"
-                                                data-show-upload="true" 
-                                                data-show-caption="true" 
-                                                data-show-preview="true"
-                                            />
                                         </div>
                                         <div class="clearfix oe_login_buttons mt-3">
                                             <button class="btn btn-primary btn-block" type="submit">Daftar</button>

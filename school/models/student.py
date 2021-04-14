@@ -77,7 +77,7 @@ class StudentStudent(models.Model):
                                                   ) or _('New')
         if vals.get('pid', False):
             vals['login'] = vals['email']
-            vals['password'] = "1234567"
+            vals['password'] = vals['password']
         else:
             raise except_orm(_('Error!'),
                              _('''PID not valid

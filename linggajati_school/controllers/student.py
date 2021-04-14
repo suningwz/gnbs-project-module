@@ -22,14 +22,14 @@ class Student(http.Controller):
         print('POST :', post)
 
         # Photo
-        photo = request.httprequest.files.getlist('photo')
-        photo = base64.b64encode(photo[0].read())
+        # photo = request.httprequest.files.getlist('photo')
+        # photo = base64.b64encode(photo[0].read())
 
         # Create Partner
         partner = request.env['res.partner'].create({
                 'name': post.get('name'),
                 'email': post.get('email'),
-                'image' : photo,
+                # 'image' : photo,
         })
         print('PARTNER')
         print("partner : ", partner)
@@ -69,7 +69,8 @@ class Student(http.Controller):
             'date_of_birth' : post.get('date'),
             'contact_phone' : post.get('number'),
             'school_id' : post.get('school'),
-            'photo' : photo,
+            'password' : post.get('password'),
+            # 'photo' : photo,
         })
         print("STUDENT")
         print("Student : ", student)

@@ -13,6 +13,9 @@ class Student(models.Model):
     previous_school_ids = fields.One2many(string='School History Details')
     student_code = fields.Char('Student ID')
 
+    # Create New Field
+    password = fields.Text(string='password',)
+
     # Change Field Name Format
     middle = fields.Char(required=False)
     last = fields.Char(required=False)
