@@ -133,22 +133,22 @@ function ValidateDOB() {
         //Get date of today, ex result: Tue Apr 13 2021 07:38:04 GMT+0700 (Western Indonesia Time)
         var dtCurrent = new Date();
         // lblError.innerHTML = "Umur dari siswa harus lebih dari 10 tahun!"
-        if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 10) {
-            alert("Umur dari siswa harus lebih dari 10 tahun!");
+        if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 5) {
+            alert("Umur dari siswa harus lebih dari 5 tahun!");
             return false;
         }
 
-        if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 10) {
+        if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 5) {
 
             //CD: 11/06/2018 and DB: 15/07/2000. Will turned 18 on 15/07/2018.
             if (dtCurrent.getMonth() < dtDOB.getMonth()) {
-                alert("Umur dari siswa harus lebih dari 10 tahun!");
+                alert("Umur dari siswa harus lebih dari 5 tahun!");
                 return false;
             }
             if (dtCurrent.getMonth() == dtDOB.getMonth()) {
                 //CD: 11/06/2018 and DB: 15/06/2000. Will turned 18 on 15/06/2018.
                 if (dtCurrent.getDate() < dtDOB.getDate()) {
-                    alert("Umur dari siswa harus lebih dari 10 tahun!");
+                    alert("Umur dari siswa harus lebih dari 5 tahun!");
                     return false;
                 }
             }
@@ -169,6 +169,6 @@ $(document).ready(function(){
         selectOtherMonths: true,
         autoclose: true,
         todayHighlight: true,
-        yearRange: "1980:2015"
+        yearRange: "-20:+0"
     })
 })
