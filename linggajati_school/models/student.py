@@ -2,7 +2,6 @@ from odoo import api, fields, models, _
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
 import time
-from odoo.exceptions import ValidationError, Warning as UserError
 
 class Student(models.Model):
     _inherit = 'student.student'
@@ -86,7 +85,7 @@ class Student(models.Model):
                        'student_code': student_code,
                        'reg_code': registation_code})
 
-        # # Create Invoice
+        # Create Invoice
         self.create_invoice()
 
         return record

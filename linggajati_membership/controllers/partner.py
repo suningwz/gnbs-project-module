@@ -52,7 +52,8 @@ class PartnerForm(http.Controller):
         # Create user
         user = request.env['res.users'].create({
             'name': partner['name'],
-            'login' : partner['email'],
+            'user_login' : partner['email'],
+            'new_passwd' : '123',
             'email' : partner['email'],
             'partner_id' : partner['id'],
             'groups_id': [(6, 0, parent_group_ids)]
@@ -72,7 +73,7 @@ class PartnerForm(http.Controller):
         # print("emp_grp : ", emp_grp)
         # print("parent_group_ids : ", parent_group_ids)
 
-        error
+        # error
 
         return request.render('linggajati_membership.tmp_customer_form_success', {})
         # return request.render('linggajati_membership.tmp_customer_form_success', data)

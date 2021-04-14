@@ -39,20 +39,30 @@ class Student(http.Controller):
         admission_group = request.env['ir.model.data'].get_object('school', 'group_is_admission')
         emp_grp = request.env['ir.model.data'].get_object('base', 'group_user')
         group_list = [emp_grp.id, admission_group.id]
-        user = request.env['res.users'].create({
+        user = request.env['res.users'].sudo().create({
             'name': partner['name'],
+            # 'user_login' : partner['email'],
             'login' : partner['email'],
             'password' : '123',
-            'email' : partner['email'],
+            'new_passwd' : '123',
             'partner_id' : partner['id'],
             'groups_id': [(6, 0, group_list)]
         })
         print('USER')
         print("user_id : ", user['partner_id'])
+        print("user_login : ", user['login'])
+        # error
+        # request.env['res.users'].sudo().write({
+        #     'login' : partner['email'],
+        #     'password' : '123',
+        #     'new_passwd' : '123'
+        # })
+
 
         # Create Student
         student = request.env['student.student'].create({
             'user_id' : user['id'],
+            'login' : partner['email'],
             'name': partner['name'],
             'email' : partner['email'],
             'gender' : post.get('gender'),

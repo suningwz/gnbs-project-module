@@ -76,8 +76,8 @@ class StudentStudent(models.Model):
                                    ].next_by_code('student.student'
                                                   ) or _('New')
         if vals.get('pid', False):
-            vals['login'] = vals['pid']
-            vals['password'] = vals['pid']
+            vals['login'] = vals['email']
+            vals['password'] = "1234567"
         else:
             raise except_orm(_('Error!'),
                              _('''PID not valid

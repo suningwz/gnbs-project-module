@@ -35,8 +35,10 @@ function validateForm() {
                 return false;
             };
             if (global_email[global_email.length - 1] !== email) {
+                console.log("sebelum validatOBe()");
                 ValidateDOB();
                 return false;
+                console.log("setelah validatOBe()");
             };
         };
     };
@@ -79,7 +81,7 @@ function ValidateDOB() {
         }
         let berhasil = true
         console.log('berhasil', berhasil)
-        // return berhasil;
+        return berhasil;
         
     }else {
         return false;

@@ -35,8 +35,8 @@
                 <div id="wrap">
                     <div class="oe_structure" id="oe_structure_website_event_index_4">
                         <div class="container">
-                            <form action="/ppdb/registration/create" name='student_form' method="POST" role="form" enctype="multipart/form-data" onsubmit="return validateForm()">
-                                <!-- <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/> -->
+                            <form action="/ppdb/registration/create" name='student_form' method="POST" id='form' role="form" enctype="multipart/form-data" >
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -124,7 +124,6 @@
                                                 Email
                                                 <span class="text-danger"> *</span>
                                             </label>
-                                            <span class="text-danger"> *</span>
                                             <input type="email" class="form-control" name="email" id="email" required="0"/>
                                         </div>
                                         <div class="form-group">
@@ -139,7 +138,7 @@
                                                 Kemampuan Baca al-Qur'an
                                                 <span class="text-danger"> *</span>
                                             </label>
-                                            <select name="" class="form-control" id="quran">
+                                            <select name="quran" class="form-control" id="quran">
                                                 <option value="">Lancar</option>
                                                 <option value="">Tidak Lancar</option>
                                                 <option value="">Tidak Bisa</option>
@@ -150,7 +149,7 @@
                                                 Hafalan Juz Amma
                                                 <span class="text-danger"> *</span>
                                             </label>
-                                            <select name="" class="form-control" id="juz_amma">
+                                            <select name="juz_amma" class="form-control" id="juz_amma">
                                                 <option value="">Hafal</option>
                                                 <option value="">Tidak Hafal</option>
                                             </select>
@@ -160,7 +159,7 @@
                                                 Kemampuan Komputer
                                                 <span class="text-danger"> *</span>
                                             </label>
-                                            <select name="" class="form-control" id="computer">
+                                            <select name="computer" class="form-control" id="computer">
                                                 <option value="">Lancar</option>
                                                 <option value="">Tidak Lancar</option>
                                                 <option value="">Tidak Bisa</option>
