@@ -54,9 +54,9 @@ function ValidateDOB() {
         console.log("regex.test(dateString :", regex.test(dateString));
         var parts = dateString.split("/");
         var dtDOB = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
-        //Get date of today, ex result: Tue Apr 13 2021 07:38:04 GMT+0700 (Western Indonesia Time)
         var dtCurrent = new Date();
-        // lblError.innerHTML = "Umur dari siswa harus lebih dari 10 tahun!"
+        console.log('umurnya :', dtCurrent.getFullYear() - dtDOB.getFullYear())
+
         if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 5) {
             alert("Umur dari siswa harus lebih dari 5 tahun!");
             return false;
@@ -77,8 +77,11 @@ function ValidateDOB() {
                 }
             }
         }
-        return true;
-    } else {
+        let berhasil = true
+        console.log('berhasil', berhasil)
+        // return berhasil;
+        
+    }else {
         return false;
     }
 }
@@ -87,7 +90,6 @@ $(document).ready(function(){
     $('.datepicker').datepicker({
         changeMonth: true,
         changeYear: true,
-        showButtonPanel: true,
         selectOtherMonths: true,
         autoclose: true,
         todayHighlight: true,
