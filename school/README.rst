@@ -51,3 +51,9 @@ Serpent Consulting Services PVT. LTD.
 This module is maintained by the SerpentCS.
 
 To contribute to this module, please visit http://serpentcs.com.
+
+
+
+Customize
+===========
+- Student Registration Email & Password

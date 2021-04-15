@@ -35,7 +35,7 @@
                 <div id="wrap">
                     <div class="oe_structure" id="oe_structure_website_event_index_4">
                         <div class="container">
-                            <form action="/ppdb/registration/create" name='student_form' method="POST" id='form' role="form" enctype="multipart/form-data" >
+                            <form action="/ppdb/registration/create" name='student_form' method="POST" id='form' role="form" enctype="multipart/form-data" onsubmit="return validateForm()">
                                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                 <div class="row">
                                     <div class="col-md-6">
