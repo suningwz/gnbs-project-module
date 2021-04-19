@@ -6,7 +6,81 @@
             <field name="url">ppdb/registration</field>
             <field name="parent_id" ref="website.main_menu"/>
             <field name="sequence">55</field>
+            <!-- <field name="group_ids" eval="[(6, 0, ref('school.group_school_student'))]"/> -->
         </record>
+
+        <!-- <record id="menu_issue_ticket" model="website.menu"> 
+            <field name="name">Issue a Ticket</field> 
+            <field name="url">/issueticket</field> 
+            <field name="parent_id" ref="website.main_menu"/> 
+            <field name="sequence" type="int">22</field> 
+            <field name="group_ids" eval="[(6, 0, [ref('base.group_user'),ref('base.group_portal')])]" /> 
+        </record> -->
+
+        <!-- <odoo>
+            <data>
+                <template id="custom_sign_in" customize_show="True" inherit_id="website.layout" name="Custom Sign In">
+                <xpath expr="//ul[@id='top_menu']" position="replace">
+                    <ul class="nav navbar-nav ml-auto text-right" id="top_menu">
+                    <li class="nav-item" t-if="website.user_id != user_id">
+                        <a class="nav-link" role="menuitem" t-attf-href="/my/orders">
+                        <span>Sale Order</span>
+                        </a>
+                    </li>
+                    <li class="nav-item divider"></li>
+                    <li class="nav-item dropdown" t-if="website.user_id != user_id">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        <b>
+                            <span t-esc="user_id.name"/>
+                        </b>
+                        </a>
+                        <div class="dropdown-menu js_usermenu" role="menu">
+                        <a href="/my/home" role="menuitem" class="dropdown-item">My Account</a>
+                        <a id="o_logout" class="dropdown-item" role="menuitem" href="/web/session/logout?redirect=/">Logout</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" t-if="website.user_id == user_id">
+                        <a class="nav-link" href="/web/login">
+                        <b>Sign in</b>
+                        </a>
+                    </li>
+                    </ul>
+                </xpath>
+                </template>
+            </data>
+        </odoo> -->
+
+        <template id="custom_sign_in" customize_show="True" inherit_id="website.layout" name="Custom Sign In">
+            <xpath expr="//ul[@id='top_menu']" position="replace">
+                <ul class="nav navbar-nav ml-auto text-right" id="top_menu">
+                    <!-- <li class="nav-item" t-if="website.user_id != user_id"> -->
+                    <!-- <li class="nav-item" t-if="request.env.user.has_group('school.group_school_student')"> -->
+                    <!-- <li class="nav-item" t-if="request.env.user.has_group('base.group_user')"> -->
+                    <li class="nav-item" t-if="request.env.user.has_group('school.group_school_parent')">
+                        <a class="nav-link" role="menuitem" t-attf-href="ppdb/registration">
+                        <span>Registrasi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item divider"></li>
+                    <li class="nav-item dropdown" t-if="website.user_id != user_id">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        <b>
+                            <span t-esc="user_id.name"/>
+                        </b>
+                        </a>
+                        <div class="dropdown-menu js_usermenu" role="menu">
+                        <a href="/my/home" role="menuitem" class="dropdown-item">My Account</a>
+                        <a id="o_logout" class="dropdown-item" role="menuitem" href="/web/session/logout?redirect=/">Logout</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" t-if="website.user_id == user_id">
+                        <a class="nav-link" href="/web/login">
+                        <b>Sign in</b>
+                        </a>
+                    </li>
+                </ul>
+            </xpath>
+        </template>
 
         <!-- Import JS -->
         <template id="assets_frontend" inherit_id="website.assets_frontend">
@@ -16,7 +90,7 @@
         </template>
 
         <!-- Membuat Form pada website  -->
-        <template id="registration" name="Registrasi">    
+        <template id="registration" name="Registrasi">
             <t t-call="website.layout">
                 <style>
                     h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, body {
