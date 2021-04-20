@@ -34,6 +34,10 @@
         # 'views/form_parent.xml',
         'views/form_student.xml',
         'views/style_css.xml',
+        
+        # Frontend
+        'views/frontend/menu.xml'
+
     ],
     # only loaded in demonstration mode
     'demo': [
