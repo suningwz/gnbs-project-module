@@ -25,18 +25,19 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/student_view.xml',
+
+        # Back-End
         'views/menu.xml',
+        'views/student_view.xml',
         'views/school_fees_view.xml',
         'views/school_view.xml',
         'views/account.xml',
-        # Front-End
-        # 'views/form_parent.xml',
-        'views/form_student.xml',
-        'views/style_css.xml',
         
-        # Frontend
-        'views/frontend/menu.xml'
+        # Front-End
+        'views/frontend/menu.xml',
+        # 'views/frontend/form_parent.xml',
+        'views/frontend/form_student.xml',
+        'views/frontend/style_css.xml',
 
     ],
     # only loaded in demonstration mode
