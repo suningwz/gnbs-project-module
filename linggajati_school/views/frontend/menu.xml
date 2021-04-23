@@ -3,11 +3,16 @@
     <data>
         <template id="custom_sign_in" customize_show="True" inherit_id="website.layout" name="Custom Sign In">
             <xpath expr="//ul[@id='top_menu']" position="replace">
-                <ul class="nav navbar-nav ml-auto text-right" id="top_menu">
+                <ul class="nav navbar-nav ml-auto text-right" id="top_menu" t-if="request.env.user.has_group('base.group_user')">
                     <!-- <li class="nav-item" t-if="website.user_id != user_id"> -->
                     <!-- <li class="nav-item" t-if="request.env.user.has_group('school.group_school_student')"> -->
-                    <!-- <li class="nav-item" t-if="request.env.user.has_group('base.group_user')"> -->
-                    <li class="nav-item" t-if="request.env.user.has_group('school.group_school_parent')">
+                    <li class="nav-item">
+                    <!-- <li class="nav-item" t-if="request.env.user.has_group('school.group_school_parent')"> -->
+                        <a class="nav-link" role="menuitem" t-attf-href="/ppdb/registration">
+                        <span>Registrasi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" role="menuitem" t-attf-href="/ppdb/registration">
                         <span>Registrasi</span>
                         </a>
