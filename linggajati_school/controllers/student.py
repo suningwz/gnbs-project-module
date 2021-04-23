@@ -77,4 +77,12 @@ class Student(http.Controller):
         print("Student : ", student['id'])
 
         return request.render('linggajati_school.thanks_page', {})
+
+    # @http.route('/template', type="http", auth='user', website=True)
+    # def template(self, **kw):)
+    #     return http.request.render('linggajati_school.template', {})
+
+    @http.route('/template', type="http", auth='public', website=True)
+    def parent_webform(self, **kw):
+        return http.request.render('linggajati_school.template', {})
     

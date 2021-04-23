@@ -27,17 +27,18 @@
         # 'security/ir.model.access.csv',
 
         # Back-End
+        'views/account.xml',
         'views/menu.xml',
-        'views/student_view.xml',
         'views/school_fees_view.xml',
         'views/school_view.xml',
-        'views/account.xml',
+        'views/student_view.xml',
         
         # Front-End
-        'views/frontend/menu.xml',
-        # 'views/frontend/form_parent.xml',
         'views/frontend/form_student.xml',
+        # 'views/frontend/menu.xml',
+        # 'views/frontend/form_parent.xml',
         'views/frontend/style_css.xml',
+        'views/frontend/template.xml',
 
     ],
     # only loaded in demonstration mode

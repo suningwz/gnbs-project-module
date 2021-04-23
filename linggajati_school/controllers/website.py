@@ -18,3 +18,4 @@ class Website(Website):
                 redirect = '/my'
             return http.redirect_with_hash(redirect)
         return response
+
