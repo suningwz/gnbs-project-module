@@ -8,8 +8,8 @@ class Website(Website):
         response = super(Website, self).web_login(redirect=redirect, *args, **kw)
         if not redirect and request.params['login_success']:
             if request.env['res.users'].browse(request.uid).has_group('base.group_user'):
-                # redirect = b'/web?' + request.httprequest.query_string
-                redirect = b'/' + request.httprequest.query_string
+                redirect = b'/web?' + request.httprequest.query_string
+                # redirect = b'/' + request.httprequest.query_string
                 # print("Cek Web : Berhasil")
                 # redirect = '/'
 
