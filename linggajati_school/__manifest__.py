@@ -39,6 +39,7 @@
         # 'views/frontend/form_parent.xml',
         'views/frontend/style_css.xml',
         'views/frontend/template.xml',
+        'views/frontend/import_js.xml',
 
     ],
     # only loaded in demonstration mode

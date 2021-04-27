@@ -51,11 +51,11 @@
         </odoo> -->
 
         <!-- Import JS -->
-        <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <!-- <template id="assets_frontend" inherit_id="website.assets_frontend">
             <xpath expr="script[last()]" position="after">
                 <script type="text/javascript" src="/linggajati_school/static/src/js/validation.js"></script>
             </xpath>
-        </template>
+        </template> -->
 
         <!-- Membuat Form pada website  -->
         <template id="registration" name="Registrasi">
