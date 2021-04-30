@@ -34,12 +34,11 @@
         'views/student_view.xml',
         
         # Front-End
-        'views/frontend/form_student.xml',
-        # 'views/frontend/menu.xml',
         # 'views/frontend/form_parent.xml',
-        'views/frontend/style_css.xml',
-        'views/frontend/template.xml',
-        'views/frontend/import_js.xml',
+        'views/frontend/form_student.xml',
+        'views/frontend/import.xml',
+        # 'views/frontend/menu.xml',
+        'views/frontend/template_sb_admin_2.xml',
 
     ],
     # only loaded in demonstration mode
