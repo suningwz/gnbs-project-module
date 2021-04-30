@@ -4,3 +4,6 @@
 .pt32 {
     padding-top: 32px !important;
 }
+p {
+    color: red !important;
+}

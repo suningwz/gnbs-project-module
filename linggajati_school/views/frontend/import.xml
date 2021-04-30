@@ -2,24 +2,21 @@
 <odoo>
     <data >
         <!-- Import JS -->
-        <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <!-- <template id="assets_frontend" inherit_id="website.assets_frontend">
             <xpath expr="script[last()]" position="after">
                 <script type="text/javascript" src="/linggajati_school/static/src/js/sb-admin-2.js"></script>
                 <script type="text/javascript" src="/linggajati_school/static/src/js/sb-admin-2-min.js"></script>
                 <script type="text/javascript" src="/linggajati_school/static/src/js/validation.js"></script>
             </xpath>
-        </template>
+        </template> -->
 
         <!-- Import CSS -->
-        <template id="assets_frontend" name="style assets" inherit_id="web.assets_frontend">
-            <xpath expr="script[last()]" position="inside">
-                <link rel="stylesheet" href="/linggajati_school/static/src/css/sb-admin-2.css"/>
-                <link rel="stylesheet" href="/linggajati_school/static/src/css/sb-admin-2-min.css"/>
-                <script type="text/javascript" src="/linggajati_school/static/src/js/sb-admin-2.js"></script>
+        <!-- <template id="sb_admin_2" name="SB Admin 2" inherit_id="website.assets_frontend">
+            <xpath expr="//link[last()]" position="after">
+                <link rel="stylesheet" type="text/css" href="/linggajati_school/static/src/css/sb-admin-2-min.css"/>
                 <script type="text/javascript" src="/linggajati_school/static/src/js/sb-admin-2-min.js"></script>
                 <script type="text/javascript" src="/linggajati_school/static/src/js/validation.js"></script>
-                <!-- <link rel="stylesheet" href="/linggajati_school/static/src/css/style.css"/> -->
             </xpath>
-        </template>
+        </template> -->
     </data>
 </odoo>
